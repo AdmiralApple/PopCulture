@@ -1,3 +1,4 @@
+using Sirenix.OdinInspector;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,9 @@ public class GlobalController : MonoBehaviour
     public float TotalPops = 0;
 
     public float WrapperSpeed = 3;
+
+    [Title("Global Variables")]
+    public bool AutoPop = false;  //if true, the player pops bubbles on mouse over
 
     private void Awake()
     {

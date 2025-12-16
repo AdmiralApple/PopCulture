@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    public float speed = 5f;
     public float Value = 1f;
 
     public GameObject UnpoppedSprite;
@@ -25,6 +24,14 @@ public class Bubble : MonoBehaviour
     private void OnMouseDown()
     {
         Pop();
+    }
+
+    private void OnMouseEnter()
+    {
+        if (GlobalController.Instance.AutoPop)
+        {
+            Pop();
+        }
     }
 
     void Pop()

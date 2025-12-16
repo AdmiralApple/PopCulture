@@ -15,13 +15,19 @@ public class SkillTreeNode : MonoBehaviour
 
     [Title("Visuals")]
     public LineRenderer ConnectionLine;
-    public List<GameObject> ChildNodes = new();
+    public List<SkillTreeNode> ChildNodes = new();
+    private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
 
     public SkillNodeTooltip Tooltip;
 
     public bool IsUnlocked => CurrentLevel > 0;
 
     public TextMeshPro LevelText;
+
+    [Title("Debug")]
+    [SerializeField] private bool hideNodesOnRebuildInspector = false;
+
+    public static bool HideNodesOnRebuild { get; private set; }
 
     private void OnEnable()
     {
@@ -32,6 +38,16 @@ public class SkillTreeNode : MonoBehaviour
     private void OnDisable()
     {
         UnregisterNode();
+    }
+
+    private void OnValidate()
+    {
+        HideNodesOnRebuild = hideNodesOnRebuildInspector;
+    }
+
+    private void Start()
+    {
+        RebuildArrowGraph();
     }
 
     private void RegisterNode()
@@ -96,6 +112,15 @@ public class SkillTreeNode : MonoBehaviour
 
         CurrentLevel++;
 
+        print("Node " + name + " purchased. New level: " + CurrentLevel);
+        print("ChildCount: " + ChildNodes.Count);
+        foreach (var child in ChildNodes)
+        {
+            print("Revealing child node: " + child.name);
+            ChildsToArrows[child].gameObject.SetActive(true);
+            child.gameObject.SetActive(true);
+        }
+
         if (Data != null)
         {
             Data.Apply(new SkillNodeContext(this));
@@ -131,15 +156,13 @@ public class SkillTreeNode : MonoBehaviour
         return true;
     }
 
-    [Button(ButtonSizes.Large)]
-    private void DebugPurchase()
-    {
-        TryPurchase();
-    }
 
-    [Button]
+    [Button(ButtonSizes.Large)]
     public void RebuildArrowGraph()
     {
+
+        ChildsToArrows = new Dictionary<SkillTreeNode, LineRenderer>();
+
         if (ConnectionLine == null)
         {
             Debug.LogWarning($"{name} is missing a connection line prefab.");
@@ -148,7 +171,7 @@ public class SkillTreeNode : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            if (child != ConnectionLine.transform)
+            if (child.GetComponent<LineRenderer>())
             {
                 DestroyImmediate(child.gameObject);
             }
@@ -161,9 +184,24 @@ public class SkillTreeNode : MonoBehaviour
                 continue;
             }
 
-            var line = Instantiate(ConnectionLine, transform.position, Quaternion.identity, transform);
-            line.SetPosition(0, transform.position);
-            line.SetPosition(1, child.transform.position);
+            LineRenderer line = Instantiate(ConnectionLine, transform.position, Quaternion.identity, transform);
+            line.SetPosition(0, Vector3.zero);
+            line.SetPosition(1, child.transform.position - transform.position);
+
+            ChildsToArrows[child] = line;
+
+            if (HideNodesOnRebuild)
+            {
+                line.gameObject.SetActive(false);
+                child.gameObject.SetActive(false);
+            }
+            else {
+                line.gameObject.SetActive(true);
+                child.gameObject.SetActive(true);
+
+            }
+
+            child.RebuildArrowGraph();  
         }
     }
 
