@@ -5,6 +5,7 @@ using UnityEngine;
 public class GlobalController : MonoBehaviour
 {
     public static GlobalController Instance;
+    public BubbleSpawner BubbleSpawner;
     public float TotalPops = 0;
 
     public float WrapperSpeed = 3;

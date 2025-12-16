@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 2
+  Value: 1
   UnpoppedSprite: {fileID: 941985152006639927}
   PoppedSprite: {fileID: 8324477885523491699}
   Popped: 0

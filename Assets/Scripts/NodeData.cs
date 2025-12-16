@@ -1,19 +1,44 @@
 using Sirenix.OdinInspector;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class NodeData : ScriptableObject
+public abstract class NodeData : ScriptableObject
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [Title("Display")]
+    public string DisplayName;
 
-    // Update is called once per frame
-    void Update()
+    [TextArea]
+    public string Description;
+
+    [Title("Costs & Limits"), MinValue(1)]
+    public int Cost = 1;
+
+    [MinValue(1)]
+    public int MaxLevel = 1;
+
+    public int costIncrease = 0;
+
+    [Title("Structure")]
+    [Tooltip("All prerequisite nodes must be purchased before this node can be purchased.")]
+    public List<NodeData> Prerequisites = new();
+
+    [Title("Effect Params")]
+
+    public abstract void Apply(SkillNodeContext context);
+
+    public virtual void Remove(SkillNodeContext context)
     {
-        
+        // Optional override for respec logic.
+    }
+}
+
+public readonly struct SkillNodeContext
+{
+    public readonly GlobalController GlobalController;
+    public readonly SkillTreeNode Node;
+
+    public SkillNodeContext(SkillTreeNode node)
+    {
+        Node = node;
+        GlobalController = GlobalController.Instance;
     }
 }
