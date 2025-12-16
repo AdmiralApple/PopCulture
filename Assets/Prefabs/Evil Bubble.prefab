@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911780604ff6eeb4cab4afee2c93f668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 1
   Value: 1
   UnpoppedSprite: {fileID: 941985152006639927}
   PoppedSprite: {fileID: 8324477885523491699}

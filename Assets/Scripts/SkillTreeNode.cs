@@ -17,6 +17,8 @@ public class SkillTreeNode : MonoBehaviour
     public LineRenderer ConnectionLine;
     public List<GameObject> ChildNodes = new();
 
+    public SkillNodeTooltip Tooltip;
+
     public bool IsUnlocked => CurrentLevel > 0;
 
     public TextMeshPro LevelText;
@@ -74,7 +76,7 @@ public class SkillTreeNode : MonoBehaviour
         }
 
         var controller = GlobalController.Instance;
-        if (controller == null || controller.TotalPops < Data.Cost)
+        if (controller == null || controller.TotalPops < Data.PostCalcCost(CurrentLevel))
         {
             return false;
         }
@@ -90,7 +92,7 @@ public class SkillTreeNode : MonoBehaviour
         }
 
         var controller = GlobalController.Instance;
-        controller.TotalPops -= Data.Cost;
+        controller.TotalPops -= Data.PostCalcCost(CurrentLevel);
 
         CurrentLevel++;
 
@@ -182,5 +184,18 @@ public class SkillTreeNode : MonoBehaviour
     private void UpdateVisuals()
     {
         LevelText.text = CurrentLevel.ToString() + "/" + Data.MaxLevel;
+        Tooltip.SetData(this);
+    }
+
+
+    private void OnMouseEnter()
+    {
+        Tooltip.gameObject.SetActive(true);
+        Tooltip.SetData(this);
+    }
+
+    private void OnMouseExit()
+    {
+        Tooltip.gameObject.SetActive(false);
     }
 }

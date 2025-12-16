@@ -9,8 +9,8 @@ public abstract class NodeData : ScriptableObject
     [TextArea]
     public string Description;
 
-    [Title("Costs & Limits"), MinValue(1)]
-    public int Cost = 1;
+    [Title("Costs & Limits"), MinValue(1), SerializeField]
+    protected int BaseCost = 1;
 
     [MinValue(1)]
     public int MaxLevel = 1;
@@ -28,6 +28,11 @@ public abstract class NodeData : ScriptableObject
     public virtual void Remove(SkillNodeContext context)
     {
         // Optional override for respec logic.
+    }
+
+    public virtual int PostCalcCost(int currentLevel)
+    {
+        return BaseCost + (costIncrease * currentLevel);
     }
 }
 
