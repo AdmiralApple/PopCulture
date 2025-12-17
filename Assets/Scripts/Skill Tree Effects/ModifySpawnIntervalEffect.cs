@@ -5,7 +5,7 @@ public class ModifySpawnIntervalEffect : NodeData
 {
 
     [Tooltip("Negative values make the spawner faster.")]
-    public float IntervalDelta = -0.5f;
+    public float IntervalDelta = .01f;
 
     public override void Apply(SkillNodeContext context)
     {
@@ -17,17 +17,6 @@ public class ModifySpawnIntervalEffect : NodeData
             return;
         }
 
-        TargetSpawner.spawnTime = Mathf.Max(0.1f, TargetSpawner.spawnTime + IntervalDelta);
-    }
-
-    public override void Remove(SkillNodeContext context)
-    {
-        BubbleSpawner TargetSpawner = context.GlobalController?.BubbleSpawner;
-        if (TargetSpawner == null)
-        {
-            return;
-        }
-
-        TargetSpawner.spawnTime = Mathf.Max(0.1f, TargetSpawner.spawnTime - IntervalDelta);
+        TargetSpawner.SpawnChance += IntervalDelta;
     }
 }

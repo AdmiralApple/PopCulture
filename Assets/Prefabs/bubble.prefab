@@ -112,7 +112,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.646934, y: -0.434014, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.7153606, y: 0.7153606, z: 0.7153606}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2264735811419254163}
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911780604ff6eeb4cab4afee2c93f668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  Value: 1
   UnpoppedSprite: {fileID: 941985152006639927}
   PoppedSprite: {fileID: 8324477885523491699}
   Popped: 0
