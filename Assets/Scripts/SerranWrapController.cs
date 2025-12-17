@@ -22,7 +22,7 @@ public class SerranWrapController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (GlobalController.Instance == null || targetRenderer == null)
+        if (!Application.isPlaying || GlobalController.Instance == null || targetRenderer == null)
         {
             return;
         }
@@ -39,6 +39,17 @@ public class SerranWrapController : MonoBehaviour
         targetRenderer.GetPropertyBlock(propertyBlock);
         propertyBlock.SetFloat(SpeedProperty, shaderSpeed);
         targetRenderer.SetPropertyBlock(propertyBlock);
+    }
+
+    private void OnValidate()
+    {
+        if (!Application.isPlaying)
+        {
+            propertyBlock = new MaterialPropertyBlock();
+            targetRenderer.GetPropertyBlock(propertyBlock);
+            propertyBlock.SetFloat(SpeedProperty, 0);
+            targetRenderer.SetPropertyBlock(propertyBlock);
+        }
     }
 
     private float GetWorldWidth()

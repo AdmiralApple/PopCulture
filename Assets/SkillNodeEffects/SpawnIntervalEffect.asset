@@ -18,4 +18,4 @@ MonoBehaviour:
   MaxLevel: 3
   costIncrease: 1
   Prerequisites: []
-  IntervalDelta: -0.5
+  IntervalDelta: 0.01

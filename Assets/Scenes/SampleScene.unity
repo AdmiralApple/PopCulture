@@ -860,6 +860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 996609907}
   - component: {fileID: 996609906}
+  - component: {fileID: 996609908}
   m_Layer: 0
   m_Name: Wrap
   m_TagString: Untagged
@@ -934,6 +935,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &996609908
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 996609905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01fa2e15815901e4c9dd0eb1a57bac1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetRenderer: {fileID: 996609906}
+  manualWorldWidth: 0
 --- !u!4 &1105886149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
@@ -1109,6 +1124,7 @@ GameObject:
   - component: {fileID: 1386176363}
   - component: {fileID: 1386176362}
   - component: {fileID: 1386176361}
+  - component: {fileID: 1386176364}
   m_Layer: 5
   m_Name: Toggle SkillTree
   m_TagString: Untagged
@@ -1218,6 +1234,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386176359}
   m_CullTransparentMesh: 1
+--- !u!114 &1386176364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386176359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39026385221becc4e9b99706a14e6c9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SkillTreeParent: {fileID: 1386176359}
 --- !u!1 &1486282062
 GameObject:
   m_ObjectHideFlags: 0
@@ -1411,7 +1440,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -20
+  m_SortingOrder: -200
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1432,7 +1461,7 @@ Transform:
   m_GameObject: {fileID: 1498036156}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.0069, y: 0.0023, z: 0}
+  m_LocalPosition: {x: 0.0069, y: 0.0023, z: 4.588972}
   m_LocalScale: {x: 17.984898, y: 10.004911, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
