@@ -117,7 +117,14 @@ public class SkillTreeNode : MonoBehaviour
         print("ChildCount: " + ChildNodes.Count);
         foreach (var child in ChildNodes)
         {
-            print("Revealing child node: " + child.name);
+            foreach (var prereq in child.Data.Prerequisites)
+            {
+                if (!prereq.IsMet(child))
+                {
+                    Debug.Log($"Child node {child.name} prerequisites not met.");
+                    continue;
+                }
+            }
             ChildsToArrows[child].gameObject.SetActive(true);
             child.gameObject.SetActive(true);
         }

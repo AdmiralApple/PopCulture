@@ -15,6 +15,6 @@ public class AutoPopEffectPrerequisite : Prerequisite
 {
     public override bool IsMet(SkillTreeNode node)
     {
-        return node.Level > 0;
+        return true;
     }
 }
