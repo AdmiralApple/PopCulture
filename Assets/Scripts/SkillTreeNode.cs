@@ -2,7 +2,7 @@ using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using Sirenix;
 public class SkillTreeNode : MonoBehaviour
 {
     private static readonly Dictionary<NodeData, SkillTreeNode> NodeLookup = new();
@@ -17,7 +17,7 @@ public class SkillTreeNode : MonoBehaviour
     public LineRenderer ConnectionLine;
     public List<SkillTreeNode> ChildNodes = new();
     public List<SkillTreeNode> ParentNodes = new();
-    private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
+    [SerializeField]private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
 
     public SkillNodeTooltip Tooltip;
 
@@ -26,9 +26,7 @@ public class SkillTreeNode : MonoBehaviour
     public TextMeshPro LevelText;
 
     [Title("Debug")]
-    [SerializeField] private bool hideNodesOnRebuildInspector = false;
-
-    public static bool HideNodesOnRebuild { get; private set; }
+    [SerializeField] private bool HideNodesOnRebuild = false;
 
     private void OnEnable()
     {
@@ -41,10 +39,6 @@ public class SkillTreeNode : MonoBehaviour
         UnregisterNode();
     }
 
-    private void OnValidate()
-    {
-        HideNodesOnRebuild = hideNodesOnRebuildInspector;
-    }
 
     private void Start()
     {
@@ -182,17 +176,15 @@ public class SkillTreeNode : MonoBehaviour
 
             ChildsToArrows[child] = line;
 
-            if (HideNodesOnRebuild)
-            {
-                line.gameObject.SetActive(false);
-                child.gameObject.SetActive(false);
-            }
-            else {
-                line.gameObject.SetActive(true);
-                child.gameObject.SetActive(true);
-            }
+            line.gameObject.SetActive(true);
+            child.gameObject.SetActive(true);
 
             child.RebuildArrowGraph();  
+        }
+
+        if (HideNodesOnRebuild)
+        {
+            HideChildren();
         }
     }
 
@@ -203,6 +195,29 @@ public class SkillTreeNode : MonoBehaviour
         {
             child.ParentNodes.Clear();
         }
+    }
+
+    public void HideChildren()
+    {
+        foreach (var child in ChildNodes)
+        {
+            if (child == null)
+            {
+                continue;
+            }
+            if (ChildsToArrows.TryGetValue(child, out var line))
+            {
+                line.gameObject.SetActive(false);
+            }
+            child.gameObject.SetActive(false);
+            child.HideChildren();
+        }
+    }
+
+    [Button(ButtonSizes.Large)]
+    public void PrintChildToArrowsSize()
+    {
+        Debug.Log($"Node {name} has {ChildsToArrows.Count} child arrows.");
     }
 
 
