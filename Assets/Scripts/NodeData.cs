@@ -19,7 +19,7 @@ public abstract class NodeData : ScriptableObject
 
     [Title("Structure")]
     [Tooltip("All prerequisite conditions must be true before this node is revealed")]
-    public List<Prerequisite> Prerequisites;
+    public List<Prerequisite> Prerequisites = new();
 
     [Title("Effect Params")]
 
@@ -33,6 +33,10 @@ public abstract class NodeData : ScriptableObject
     public virtual int PostCalcCost(int currentLevel)
     {
         return BaseCost + (costIncrease * currentLevel);
+    }
+
+    public virtual void InitializeNode(SkillTreeNode node)
+    {
     }
 }
 
@@ -48,7 +52,7 @@ public readonly struct SkillNodeContext
     }
 }
 
-public abstract class Prerequisite : ScriptableObject
+public abstract class Prerequisite
 {
     public abstract bool IsMet(SkillTreeNode node);
 }

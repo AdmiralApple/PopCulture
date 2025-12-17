@@ -9,6 +9,7 @@ public class SkillTreeNode : MonoBehaviour
 
     [Title("Data")]
     public NodeData Data;
+    public GameObject CanBuyIndicator;
     public bool RootNode = false;
     [ShowInInspector, ReadOnly]
     public int CurrentLevel { get; private set; }
@@ -39,11 +40,25 @@ public class SkillTreeNode : MonoBehaviour
         UnregisterNode();
     }
 
-
-    private void Start()
+    private void OnValidate()
     {
         RebuildArrowGraph();
     }
+
+
+    private void Start()
+    {
+        if(RootNode) RebuildArrowGraph();
+    }
+
+    private void Update()
+    {
+        if (CanBuyIndicator != null)
+        {
+            CanBuyIndicator.SetActive(CanPurchase());
+        }
+    }
+
 
     private void RegisterNode()
     {
@@ -111,15 +126,23 @@ public class SkillTreeNode : MonoBehaviour
         print("ChildCount: " + ChildNodes.Count);
         foreach (var child in ChildNodes)
         {
-            foreach (var prereq in child.Data.Prerequisites)
+            bool prereqFailed = false;
+            foreach (Prerequisite prereq in child.Data.Prerequisites)
             {
                 if (!prereq.IsMet(child))
                 {
                     Debug.Log($"Child node {child.name} prerequisites not met.");
-                    continue;
+                    prereqFailed = true;
                 }
             }
-            ChildsToArrows[child].gameObject.SetActive(true);
+            if (prereqFailed) continue;
+
+            print(child.name + " prerequisites met. Unlocking node.");
+            foreach (var parent in child.ParentNodes)
+            {
+                print($"Parent: {parent.name}, Level: {parent.CurrentLevel}/{parent.Data.MaxLevel}");
+                parent.ChildsToArrows[child].gameObject.SetActive(true);
+            }
             child.gameObject.SetActive(true);
         }
 
@@ -139,6 +162,8 @@ public class SkillTreeNode : MonoBehaviour
     [Button(ButtonSizes.Large)]
     public void RebuildArrowGraph()
     {
+
+        Data.InitializeNode(this);
 
         if (RootNode)
         {

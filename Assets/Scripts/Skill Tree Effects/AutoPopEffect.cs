@@ -9,16 +9,23 @@ public class AutoPopEffect : NodeData
     {
         context.GlobalController.AutoPop = true;
     }
+
+    public override void InitializeNode(SkillTreeNode node)
+    {
+        Prerequisites.Add(new AutoPopEffectPrerequisite());
+    }
 }
 
 public class AutoPopEffectPrerequisite : Prerequisite
 {
     public override bool IsMet(SkillTreeNode node)
     {
+
         if (node == null || node.ParentNodes == null || node.ParentNodes.Count == 0)
         {
             return false;
         }
+
 
         foreach (var parent in node.ParentNodes)
         {
@@ -26,7 +33,6 @@ public class AutoPopEffectPrerequisite : Prerequisite
             {
                 return false;
             }
-
             if (parent.CurrentLevel < parent.Data.MaxLevel)
             {
                 return false;

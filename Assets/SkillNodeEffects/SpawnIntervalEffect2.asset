@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab972e86d3690f94e81b3ad633aa8a99, type: 3}
-  m_Name: WrapperSpeedEffect
+  m_Script: {fileID: 11500000, guid: e11cb740f712c3246baf582741ef5731, type: 3}
+  m_Name: SpawnIntervalEffect2
   m_EditorClassIdentifier: 
-  DisplayName: Speed Up
-  Description: 
+  DisplayName: Spawn Speed Up
+  Description: Increases the spawn rate of bubbles by 10% per level.
   BaseCost: 1
-  MaxLevel: 3
+  MaxLevel: 1
   costIncrease: 1
-  SpeedDelta: 1
+  IntervalDelta: 0.01

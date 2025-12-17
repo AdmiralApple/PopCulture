@@ -10,12 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e11cb740f712c3246baf582741ef5731, type: 3}
-  m_Name: SpawnIntervalEffect
+  m_Name: SpawnIntervalEffect1
   m_EditorClassIdentifier: 
   DisplayName: Spawn Speed Up
   Description: Increases the spawn rate of bubbles by 10% per level.
   BaseCost: 1
-  MaxLevel: 3
+  MaxLevel: 1
   costIncrease: 1
-  Prerequisites: []
   IntervalDelta: 0.01
