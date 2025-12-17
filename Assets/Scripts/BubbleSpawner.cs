@@ -5,8 +5,6 @@ using UnityEngine;
 public class BubbleSpawner : MonoBehaviour
 {
     [Header("References")]
-    public Transform SpawnBottom;
-    public Transform SpawnTop;
     public GameObject BubblePrefab;
 
     public Transform SpawnFirstPoint;
@@ -49,7 +47,7 @@ public class BubbleSpawner : MonoBehaviour
                 continue;
 
             float spawnY = SpawnFirstPoint.position.y - (i * bubbleDiameter) - (Frame1or2 ? 0 : .5f);
-            Vector3 pos = new Vector3(SpawnTop.position.x, spawnY, SpawnTop.position.z);
+            Vector3 pos = new Vector3(SpawnFirstPoint.position.x, spawnY, SpawnFirstPoint.position.z);
             Quaternion rot = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
             Instantiate(BubblePrefab, pos, rot, transform);
         }

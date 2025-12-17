@@ -18,8 +18,8 @@ public abstract class NodeData : ScriptableObject
     public int costIncrease = 0;
 
     [Title("Structure")]
-    [Tooltip("All prerequisite nodes must be purchased before this node can be purchased.")]
-    public List<NodeData> Prerequisites = new();
+    [Tooltip("All prerequisite conditions must be true before this node is revealed")]
+    public List<Prerequisite> Prerequisites;
 
     [Title("Effect Params")]
 
@@ -46,4 +46,9 @@ public readonly struct SkillNodeContext
         Node = node;
         GlobalController = GlobalController.Instance;
     }
+}
+
+public abstract class Prerequisite : ScriptableObject
+{
+    public abstract bool IsMet(SkillTreeNode node);
 }

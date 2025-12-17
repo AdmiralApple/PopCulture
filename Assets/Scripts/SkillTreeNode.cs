@@ -9,13 +9,14 @@ public class SkillTreeNode : MonoBehaviour
 
     [Title("Data")]
     public NodeData Data;
-
+    public bool RootNode = false;
     [ShowInInspector, ReadOnly]
     public int CurrentLevel { get; private set; }
 
     [Title("Visuals")]
     public LineRenderer ConnectionLine;
     public List<SkillTreeNode> ChildNodes = new();
+    public List<SkillTreeNode> ParentNodes = new();
     private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
 
     public SkillNodeTooltip Tooltip;
@@ -92,12 +93,12 @@ public class SkillTreeNode : MonoBehaviour
         }
 
         var controller = GlobalController.Instance;
-        if (controller == null || controller.TotalPops < Data.PostCalcCost(CurrentLevel))
+        if (controller == null || controller.CurrentPops < Data.PostCalcCost(CurrentLevel))
         {
             return false;
         }
 
-        return MeetsPrerequisites();
+        return true;
     }
 
     public bool TryPurchase()
@@ -108,7 +109,7 @@ public class SkillTreeNode : MonoBehaviour
         }
 
         var controller = GlobalController.Instance;
-        controller.TotalPops -= Data.PostCalcCost(CurrentLevel);
+        controller.RemovePops(Data.PostCalcCost(CurrentLevel));
 
         CurrentLevel++;
 
@@ -133,33 +134,15 @@ public class SkillTreeNode : MonoBehaviour
         return true;
     }
 
-    private bool MeetsPrerequisites()
-    {
-        if (Data == null || Data.Prerequisites == null || Data.Prerequisites.Count == 0)
-        {
-            return true;
-        }
-
-        foreach (var prerequisite in Data.Prerequisites)
-        {
-            if (prerequisite == null)
-            {
-                continue;
-            }
-
-            if (!NodeLookup.TryGetValue(prerequisite, out var node) || !node.IsUnlocked)
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
 
     [Button(ButtonSizes.Large)]
     public void RebuildArrowGraph()
     {
+
+        if (RootNode)
+        {
+            ClearParents();
+        }
 
         ChildsToArrows = new Dictionary<SkillTreeNode, LineRenderer>();
 
@@ -184,6 +167,8 @@ public class SkillTreeNode : MonoBehaviour
                 continue;
             }
 
+            child.ParentNodes.Add(this);
+
             LineRenderer line = Instantiate(ConnectionLine, transform.position, Quaternion.identity, transform);
             line.SetPosition(0, Vector3.zero);
             line.SetPosition(1, child.transform.position - transform.position);
@@ -198,10 +183,18 @@ public class SkillTreeNode : MonoBehaviour
             else {
                 line.gameObject.SetActive(true);
                 child.gameObject.SetActive(true);
-
             }
 
             child.RebuildArrowGraph();  
+        }
+    }
+
+    public void ClearParents()
+    {
+        ParentNodes.Clear();
+        foreach (var child in ChildNodes)
+        {
+            child.ParentNodes.Clear();
         }
     }
 

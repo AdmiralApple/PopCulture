@@ -9,7 +9,7 @@ public class PopCounter : MonoBehaviour
     void Update()
     {
 
-        counter.text = "Total Pops: " + GlobalController.Instance.TotalPops.ToString();
+        counter.text = "Happiness: " + GlobalController.Instance.CurrentPops.ToString();
     }
 
 }

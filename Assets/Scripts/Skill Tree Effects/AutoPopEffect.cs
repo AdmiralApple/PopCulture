@@ -10,3 +10,11 @@ public class AutoPopEffect : NodeData
         context.GlobalController.AutoPop = true;
     }
 }
+
+public class AutoPopEffectPrerequisite : Prerequisite
+{
+    public override bool IsMet(SkillTreeNode node)
+    {
+        return node.Level > 0;
+    }
+}

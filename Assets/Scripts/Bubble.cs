@@ -40,7 +40,7 @@ public class Bubble : MonoBehaviour
         UnpoppedSprite.SetActive(false);
         PoppedSprite.SetActive(true);
 
-        GlobalController.Instance.TotalPops += Value;
+        GlobalController.Instance.AddPops(GlobalController.Instance.BasePopValue);
 
         Popped = true;
     }
