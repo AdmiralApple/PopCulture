@@ -6,6 +6,8 @@ public class BubbleSpawner : MonoBehaviour
 {
     [Header("References")]
     public GameObject BubblePrefab;
+    [Tooltip("Optional special-case prefabs with their own spawn slices.")]
+    public List<BubbleVariant> SpecialBubbleVariants = new List<BubbleVariant>();
 
     public Transform SpawnFirstPoint;
 
@@ -49,9 +51,39 @@ public class BubbleSpawner : MonoBehaviour
             float spawnY = SpawnFirstPoint.position.y - (i * bubbleDiameter) - (Frame1or2 ? 0 : .5f);
             Vector3 pos = new Vector3(SpawnFirstPoint.position.x, spawnY, SpawnFirstPoint.position.z);
             Quaternion rot = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
-            Instantiate(BubblePrefab, pos, rot, transform);
+            GameObject prefabToSpawn = GetBubblePrefabForSpawn();
+            Instantiate(prefabToSpawn, pos, rot, transform);
         }
 
         Frame1or2 = !Frame1or2;
+    }
+
+    GameObject GetBubblePrefabForSpawn()
+    {
+        float roll = Random.value;
+        float cumulative = 0f;
+
+        for (int i = 0; i < SpecialBubbleVariants.Count; i++)
+        {
+            BubbleVariant variant = SpecialBubbleVariants[i];
+            if (variant == null || variant.Prefab == null || variant.Chance <= 0f)
+                continue;
+
+            cumulative += Mathf.Max(0f, variant.Chance);
+            if (roll < cumulative)
+            {
+                return variant.Prefab;
+            }
+        }
+
+        return BubblePrefab;
+    }
+
+    [System.Serializable]
+    public class BubbleVariant
+    {
+        public GameObject Prefab;
+        [Range(0f, 1f)]
+        public float Chance = 0.01f;
     }
 }
