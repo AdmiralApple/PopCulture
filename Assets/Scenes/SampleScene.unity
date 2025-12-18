@@ -1643,6 +1643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BubbleSpawner: {fileID: 1978799435}
   WrapperSpeed: 1
+  Corrupt: 0
   AutoPop: 0
   BasePopValue: 1
 --- !u!4 &1207787414
@@ -2447,6 +2448,8 @@ MonoBehaviour:
   SpecialBubbleVariants:
   - Prefab: {fileID: 7818443605899349300, guid: b9623628a9ae83f43a019ebf10409a86, type: 3}
     Chance: 0.495
+  - Prefab: {fileID: 8740159956993220117, guid: a58c7e8959149664b906700758e7d9be, type: 3}
+    Chance: 0.241
   SpawnFirstPoint: {fileID: 892684185}
   maxBubblesPerRow: 8
   HorizontalGap: 0.05

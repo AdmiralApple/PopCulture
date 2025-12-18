@@ -13,9 +13,29 @@ public class GlobalController : MonoBehaviour
     public float WrapperSpeed = 3;
 
     [Title("Global Variables")]
+    public bool Corrupt = false;
     public bool AutoPop = false;  //if true, the player pops bubbles on mouse over
 
     public float BasePopValue = 1;
+
+
+    //make an event that gets called when you become corrupt
+    public event System.Action OnCorrupt;
+
+    public void SetCorrupt(bool isCorrupt)
+    {
+        if (Corrupt != isCorrupt)
+        {
+            Corrupt = isCorrupt;
+            if (Corrupt && OnCorrupt != null)
+            {
+                OnCorrupt.Invoke();
+            }
+        }
+    }
+
+
+
 
     private void Awake()
     {

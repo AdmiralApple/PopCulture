@@ -18,7 +18,7 @@ public class SkillTreeNode : MonoBehaviour
     public LineRenderer ConnectionLine;
     public List<SkillTreeNode> ChildNodes = new();
     public List<SkillTreeNode> ParentNodes = new();
-    [SerializeField]private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
+    [SerializeField]public Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
 
     public SkillNodeTooltip Tooltip;
 

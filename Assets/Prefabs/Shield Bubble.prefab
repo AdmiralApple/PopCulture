@@ -148,8 +148,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shieldCollider: {fileID: 138610894825064691}
   contactBuffer: 0.05
-  pushDirectionNudge: 0.05
-  pushStrength: 250
+  boundaryOffset: 0.02
   targetCamera: {fileID: 0}
 --- !u!1001 &7012899672801489329
 PrefabInstance:
