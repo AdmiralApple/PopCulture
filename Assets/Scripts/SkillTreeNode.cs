@@ -170,7 +170,27 @@ public class SkillTreeNode : MonoBehaviour
             ClearParents();
         }
 
+        var oldArrows = ChildsToArrows;
         ChildsToArrows = new Dictionary<SkillTreeNode, LineRenderer>();
+        if (oldArrows != null)
+        {
+            foreach (var line in oldArrows.Values)
+            {
+                if (line == null)
+                {
+                    continue;
+                }
+
+                if (Application.isPlaying)
+                {
+                    Destroy(line.gameObject);
+                }
+                else
+                {
+                    DestroyImmediate(line.gameObject);
+                }
+            }
+        }
 
         if (ConnectionLine == null)
         {
