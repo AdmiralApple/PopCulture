@@ -18,7 +18,7 @@ public class SkillTreeNode : MonoBehaviour
     public LineRenderer ConnectionLine;
     public List<SkillTreeNode> ChildNodes = new();
     public List<SkillTreeNode> ParentNodes = new();
-    [SerializeField]private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows;  //maps child nodes to their connection lines
+    [SerializeField]private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
 
     public SkillNodeTooltip Tooltip;
 
@@ -48,8 +48,11 @@ public class SkillTreeNode : MonoBehaviour
 
     private void Start()
     {
+        if (RootNode)
+        {
+            RebuildArrowGraph();
+        }
         PrintChildToArrowsSize();
-        //if(RootNode) RebuildArrowGraph();
     }
 
     private void Update()
@@ -203,7 +206,16 @@ public class SkillTreeNode : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            if (child.GetComponent<LineRenderer>())
+            if (!child.GetComponent<LineRenderer>())
+            {
+                continue;
+            }
+
+            if (Application.isPlaying)
+            {
+                Destroy(child.gameObject);
+            }
+            else
             {
                 DestroyImmediate(child.gameObject);
             }
