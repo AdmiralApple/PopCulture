@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5985018918847957482}
   - component: {fileID: 8001125522866639986}
   - component: {fileID: 138610894825064691}
+  - component: {fileID: 4954686524203938375}
   m_Layer: 0
   m_Name: Shield
   m_TagString: Untagged
@@ -133,6 +134,21 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
+--- !u!114 &4954686524203938375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7153243460377590842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c7de48cdb535ff48b85c3ebb28e9bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  repelRadius: 80
+  pushStrength: 250
+  targetCamera: {fileID: 0}
 --- !u!1001 &7012899672801489329
 PrefabInstance:
   m_ObjectHideFlags: 0
