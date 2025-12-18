@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "BubbleHappinessGainEffect", menuName = "SkillTree/Bubble Happiness Gain")]
 public class BubbleHappinessGainEffect : NodeData
 {
     public float SpeedDelta = .1f;

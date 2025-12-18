@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "WrapperSpeedEffect", menuName = "SkillTree/Modify Wrapper Speed")]
 public class ModifyWrapperSpeedEffect : NodeData
 {
     [Tooltip("Amount added to GlobalController.WrapperSpeed when the node is purchased.")]

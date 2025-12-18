@@ -27,7 +27,7 @@ public class SkillTreeNode : MonoBehaviour
     public TextMeshPro LevelText;
 
     [Title("Debug")]
-    [SerializeField] private bool HideNodesOnRebuild = false;
+    [SerializeField] private bool HideNodesOnRebuild = true;
 
     private void OnEnable()
     {
@@ -52,7 +52,6 @@ public class SkillTreeNode : MonoBehaviour
         {
             RebuildArrowGraph();
         }
-        PrintChildToArrowsSize();
     }
 
     private void Update()
@@ -220,6 +219,7 @@ public class SkillTreeNode : MonoBehaviour
                 DestroyImmediate(child.gameObject);
             }
         }
+        print(gameObject.name + " Child count: " + ChildNodes.Count);
 
         foreach (var child in ChildNodes)
         {
@@ -228,6 +228,7 @@ public class SkillTreeNode : MonoBehaviour
                 continue;
             }
 
+            print($"Connecting {name} to child {child.name}");
             child.ParentNodes.Add(this);
 
             LineRenderer line = Instantiate(ConnectionLine, transform.position, Quaternion.identity, transform);
@@ -250,10 +251,11 @@ public class SkillTreeNode : MonoBehaviour
 
     public void ClearParents()
     {
+        print($"Clearing parents of node {name}");
         ParentNodes.Clear();
         foreach (var child in ChildNodes)
         {
-            child.ParentNodes.Clear();
+            child.ClearParents();
         }
     }
 

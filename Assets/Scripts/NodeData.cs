@@ -21,6 +21,8 @@ public abstract class NodeData : MonoBehaviour
     [Tooltip("All prerequisite conditions must be true before this node is revealed")]
     public List<Prerequisite> Prerequisites = new();
 
+    public PrerequisiteType BasePrereq = PrerequisiteType.None;
+
     [Title("Effect Params")]
 
     public abstract void Apply(SkillNodeContext context);
@@ -37,6 +39,22 @@ public abstract class NodeData : MonoBehaviour
 
     public virtual void InitializeNode(SkillTreeNode node)
     {
+        Prerequisites.Clear();
+        switch (BasePrereq)
+        {
+            case PrerequisiteType.AllParentsFullyUpgraded:
+                Prerequisites.Add(new AllParentsFullyUpgradedPrereq());
+                break;
+            case PrerequisiteType.AnyParentUnlocked:
+                //Prerequisites.Add(new AnyParentUnlockedPrereq());
+                break;
+            case PrerequisiteType.SpecificNodeUnlocked:
+                // Specific node prerequisite logic can be added here.
+                break;
+            case PrerequisiteType.None:
+            default:
+                break;
+        }
     }
 }
 
@@ -55,4 +73,12 @@ public readonly struct SkillNodeContext
 public abstract class Prerequisite
 {
     public abstract bool IsMet(SkillTreeNode node);
+}
+
+public enum PrerequisiteType
+{
+    None,
+    AllParentsFullyUpgraded,
+    AnyParentUnlocked,
+    SpecificNodeUnlocked
 }

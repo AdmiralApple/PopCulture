@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "AutoPopEffect", menuName = "SkillTree/Auto Pop Effect")]
 public class AutoPopEffect : NodeData
 {
 
@@ -10,13 +9,9 @@ public class AutoPopEffect : NodeData
         context.GlobalController.AutoPop = true;
     }
 
-    public override void InitializeNode(SkillTreeNode node)
-    {
-        Prerequisites.Add(new AutoPopEffectPrerequisite());
-    }
 }
 
-public class AutoPopEffectPrerequisite : Prerequisite
+public class AllParentsFullyUpgradedPrereq : Prerequisite
 {
     public override bool IsMet(SkillTreeNode node)
     {
