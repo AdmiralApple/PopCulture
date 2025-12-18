@@ -18,7 +18,7 @@ public class SkillTreeNode : MonoBehaviour
     public LineRenderer ConnectionLine;
     public List<SkillTreeNode> ChildNodes = new();
     public List<SkillTreeNode> ParentNodes = new();
-    [SerializeField]private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows = new();  //maps child nodes to their connection lines
+    [SerializeField]private Dictionary<SkillTreeNode, LineRenderer> ChildsToArrows;  //maps child nodes to their connection lines
 
     public SkillNodeTooltip Tooltip;
 
@@ -42,13 +42,14 @@ public class SkillTreeNode : MonoBehaviour
 
     private void OnValidate()
     {
-        RebuildArrowGraph();
+        //RebuildArrowGraph();
     }
 
 
     private void Start()
     {
-        if(RootNode) RebuildArrowGraph();
+        PrintChildToArrowsSize();
+        //if(RootNode) RebuildArrowGraph();
     }
 
     private void Update()
@@ -127,6 +128,8 @@ public class SkillTreeNode : MonoBehaviour
         foreach (var child in ChildNodes)
         {
             bool prereqFailed = false;
+            print(child.Data.name);
+            print(child.Data.Prerequisites.Count + " prerequisites to check.");
             foreach (Prerequisite prereq in child.Data.Prerequisites)
             {
                 if (!prereq.IsMet(child))

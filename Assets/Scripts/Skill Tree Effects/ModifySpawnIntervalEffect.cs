@@ -1,6 +1,5 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "SpawnIntervalEffect", menuName = "SkillTree/Modify Spawn Interval")]
 public class ModifySpawnIntervalEffect : NodeData
 {
 

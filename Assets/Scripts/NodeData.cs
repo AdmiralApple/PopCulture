@@ -1,7 +1,7 @@
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-public abstract class NodeData : ScriptableObject
+public abstract class NodeData : MonoBehaviour
 {
     [Title("Display")]
     public string DisplayName;
@@ -9,7 +9,7 @@ public abstract class NodeData : ScriptableObject
     [TextArea]
     public string Description;
 
-    [Title("Costs & Limits"), MinValue(1), SerializeField]
+    [Title("Costs & Limits"), SerializeField]
     protected int BaseCost = 1;
 
     [MinValue(1)]
