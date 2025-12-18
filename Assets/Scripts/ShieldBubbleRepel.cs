@@ -3,41 +3,74 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.LowLevel;
 
 /// <summary>
-/// Repels the hardware cursor from the shield bubble using the Input System cursor warp API.
+/// Repels the hardware cursor whenever it touches the shield's edge collider.
 /// </summary>
+[RequireComponent(typeof(EdgeCollider2D))]
 public class ShieldBubbleRepel : MonoBehaviour
 {
-    [Tooltip("Radius in screen pixels at which the cursor begins getting pushed away.")]
-    [SerializeField] float repelRadius = 80f;
+    [Tooltip("Collider that defines the shield boundary.")]
+    [SerializeField] EdgeCollider2D shieldCollider;
 
-    [Tooltip("How fast (pixels/second) the cursor is pushed once inside the radius.")]
+    [Tooltip("World-space distance from the edge considered as contact.")]
+    [SerializeField] float contactBuffer = 0.05f;
+
+    [Tooltip("How much world offset is used to derive the push direction.")]
+    [SerializeField] float pushDirectionNudge = 0.05f;
+
+    [Tooltip("How fast (pixels/second) the cursor is pushed once in contact.")]
     [SerializeField] float pushStrength = 250f;
 
     [Tooltip("Optional override; defaults to Camera.main when left empty.")]
     [SerializeField] Camera targetCamera;
+
+    void Reset()
+    {
+        shieldCollider = GetComponent<EdgeCollider2D>();
+    }
+
+    void OnValidate()
+    {
+        if (shieldCollider == null)
+            shieldCollider = GetComponent<EdgeCollider2D>();
+    }
 
     void Update()
     {
         Camera cam = targetCamera != null ? targetCamera : Camera.main;
         Mouse mouse = Mouse.current;
 
-        if (cam == null || mouse == null || !Application.isFocused)
-            return;
-
-        Vector3 screenPoint = cam.WorldToScreenPoint(transform.position);
-        if (screenPoint.z < 0f)
+        if (cam == null || mouse == null || shieldCollider == null || !Application.isFocused)
             return;
 
         Vector2 cursor = mouse.position.ReadValue();
-        Vector2 toCursor = cursor - (Vector2)screenPoint;
+        float depth = Mathf.Abs(transform.position.z - cam.transform.position.z);
+        Vector3 worldPoint3 = cam.ScreenToWorldPoint(new Vector3(cursor.x, cursor.y, depth));
+        Vector2 mouseWorld = worldPoint3;
 
-        if (toCursor.sqrMagnitude > repelRadius * repelRadius)
+        Vector2 closest = shieldCollider.ClosestPoint(mouseWorld);
+        float distance = Vector2.Distance(mouseWorld, closest);
+
+        if (distance > contactBuffer)
             return;
 
-        Vector2 pushDir = toCursor.sqrMagnitude < 0.001f ? Random.insideUnitCircle.normalized : toCursor.normalized;
-        Vector2 newPos = cursor + pushDir * pushStrength * Time.deltaTime;
+        Vector2 worldDir = mouseWorld - closest;
+        if (worldDir.sqrMagnitude < 0.0001f)
+        {
+            worldDir = mouseWorld - (Vector2)shieldCollider.bounds.center;
+            if (worldDir.sqrMagnitude < 0.0001f)
+                worldDir = Vector2.right;
+        }
+        worldDir.Normalize();
+
+        Vector3 nudgeWorld = (Vector3)(mouseWorld + worldDir * pushDirectionNudge);
+        Vector2 pushDirScreen = (Vector2)cam.WorldToScreenPoint(nudgeWorld) - cursor;
+        if (pushDirScreen.sqrMagnitude < 0.0001f)
+            pushDirScreen = worldDir;
+        pushDirScreen.Normalize();
+
+        Vector2 newPos = cursor + pushDirScreen * pushStrength * Time.deltaTime;
 
         mouse.WarpCursorPosition(newPos);
-        InputState.Change(mouse.position, newPos); // keep Input System events in sync
+        InputState.Change(mouse.position, newPos);
     }
 }

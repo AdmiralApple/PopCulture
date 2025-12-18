@@ -146,7 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c7de48cdb535ff48b85c3ebb28e9bbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  repelRadius: 80
+  shieldCollider: {fileID: 138610894825064691}
+  contactBuffer: 0.05
+  pushDirectionNudge: 0.05
   pushStrength: 250
   targetCamera: {fileID: 0}
 --- !u!1001 &7012899672801489329
