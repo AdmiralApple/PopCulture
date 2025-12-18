@@ -27,7 +27,7 @@ public class SkillTreeNode : MonoBehaviour
     public TextMeshPro LevelText;
 
     [Title("Debug")]
-    [SerializeField] private bool HideNodesOnRebuild = true;
+    [SerializeField] public bool HideNodesOnRebuild = true;
 
     private void OnEnable()
     {
@@ -240,6 +240,7 @@ public class SkillTreeNode : MonoBehaviour
             line.gameObject.SetActive(true);
             child.gameObject.SetActive(true);
 
+            child.HideNodesOnRebuild = HideNodesOnRebuild;
             child.RebuildArrowGraph();  
         }
 
