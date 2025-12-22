@@ -14,6 +14,10 @@ public class AutoPopEffect : NodeData
         base.InitializeNode(node);
         Prerequisites.Add(new IsCorruptPrereq());
 
+        if(UnityEngine.Application.isPlaying == false)
+        {
+            return;
+        }
         GlobalController.Instance.OnCorrupt += () =>
         {
             foreach (var prereq in Prerequisites)

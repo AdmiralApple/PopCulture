@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bubble : MonoBehaviour
 {
-    public float Value = 1f;
+    public float BaseValue = 1f;
 
     public GameObject UnpoppedSprite;
     public GameObject PoppedSprite;
@@ -40,7 +40,7 @@ public class Bubble : MonoBehaviour
         UnpoppedSprite.SetActive(false);
         PoppedSprite.SetActive(true);
 
-        GlobalController.Instance.AddPops(GlobalController.Instance.BasePopValue);
+        GlobalController.Instance.AddPops(BaseValue + GlobalController.Instance.PopValueModifier);
 
         Popped = true;
     }

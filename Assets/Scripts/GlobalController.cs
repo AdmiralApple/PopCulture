@@ -16,7 +16,7 @@ public class GlobalController : MonoBehaviour
     public bool Corrupt = false;
     public bool AutoPop = false;  //if true, the player pops bubbles on mouse over
 
-    public float BasePopValue = 1;
+    public float PopValueModifier = 0;
 
 
     //make an event that gets called when you become corrupt

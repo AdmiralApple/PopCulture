@@ -82,6 +82,7 @@ public class BubbleSpawner : MonoBehaviour
     [System.Serializable]
     public class BubbleVariant
     {
+        public string Name;
         public GameObject Prefab;
         [Range(0f, 1f)]
         public float Chance = 0.01f;
