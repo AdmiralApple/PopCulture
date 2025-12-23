@@ -24,9 +24,15 @@ public class BubbleSpawner : MonoBehaviour
 
     private bool Frame1or2 = true;
 
+    [Header("Testing")]
+    [SerializeField] bool garunteedSpawn = false;
 
     IEnumerator Start()
     {
+        if (garunteedSpawn)
+        {
+            SpawnChance = 1f;
+        }
         while (true)
         {
             SpawnRow();
@@ -82,7 +88,7 @@ public class BubbleSpawner : MonoBehaviour
     [System.Serializable]
     public class BubbleVariant
     {
-        public string Name;
+        public BubbleType type;
         public GameObject Prefab;
         [Range(0f, 1f)]
         public float Chance = 0.01f;

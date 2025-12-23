@@ -13,7 +13,7 @@ public class IncreaseGoldBubbleSpawnEffect : NodeData
 
         foreach (var bubble in TargetSpawner.SpecialBubbleVariants)
         {
-            if (bubble.Name == "gold")
+            if (bubble.type == BubbleType.Golden)
             {
                 bubble.Chance += SpawnRateDelta;
             }

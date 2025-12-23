@@ -6,6 +6,6 @@ public class CorruptBubble : MonoBehaviour
 {
     private void OnMouseDown()
     {
-        GlobalController.Instance.SetCorrupt(true);
+        
     }
 }

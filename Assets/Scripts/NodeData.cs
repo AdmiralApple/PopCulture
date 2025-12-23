@@ -39,6 +39,7 @@ public abstract class NodeData : MonoBehaviour
 
     public virtual void InitializeNode(SkillTreeNode node)
     {
+        Prerequisites = new();
         Prerequisites.Clear();
         switch (BasePrereq)
         {

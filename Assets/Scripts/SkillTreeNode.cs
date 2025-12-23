@@ -67,11 +67,19 @@ public class SkillTreeNode : MonoBehaviour
     {
         if (Data == null)
         {
-            Debug.LogWarning($"{name} has no NodeData assigned.");
-            return;
+            Data = GetComponent<NodeData>();
+            if (Data == null)
+            {
+                //Debug.LogWarning($"{name} has no NodeData component assigned.");
+                return;
+            }
         }
 
-        if (NodeLookup.TryGetValue(Data, out var existing) && existing != this)
+
+
+        NodeLookup.TryGetValue(Data, out var existing);
+
+        if (NodeLookup.TryGetValue(Data, out existing) && existing != this)
         {
             Debug.LogWarning($"NodeData {Data.name} already registered to {existing.name}. Overwriting with {name}.");
         }
@@ -168,7 +176,11 @@ public class SkillTreeNode : MonoBehaviour
     [Button(ButtonSizes.Large)]
     public void RebuildArrowGraph()
     {
-
+        if(Data == null)
+        {
+            Data = GetComponent<NodeData>();
+            return;
+        }
         Data.InitializeNode(this);
 
         if (RootNode)
@@ -300,6 +312,10 @@ public class SkillTreeNode : MonoBehaviour
 
     private void UpdateVisuals()
     {
+        if(Data == null || LevelText == null)
+        {
+            return;
+        }
         LevelText.text = CurrentLevel.ToString() + "/" + Data.MaxLevel;
         Tooltip.SetData(this);
     }
