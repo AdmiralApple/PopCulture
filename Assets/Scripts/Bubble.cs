@@ -25,21 +25,23 @@ public class Bubble : MonoBehaviour
     //on click, pop the bubble
     private void OnMouseDown()
     {
-        Pop(0);
+        PopData popData = new PopData(PopType.Mouse);
+        Pop(popData);
     }
 
     private void OnMouseEnter()
     {
         if (GlobalController.Instance.AutoPop)
         {
-            Pop(0);
+            PopData popData = new PopData(PopType.Mouse);
+            Pop(popData);
         }
     }
 
-    void Pop(int chainCount)
+    public void Pop(PopData pData)
     {
         if(Popped) return;
-        if(chainCount > GlobalController.Instance.ChainBoltMaxJumps) return;
+        if(pData.chainCount > GlobalController.Instance.ChainBoltMaxJumps) return;
         UnpoppedSprite.SetActive(false);
         PoppedSprite.SetActive(true);
 
@@ -83,21 +85,34 @@ public class Bubble : MonoBehaviour
         float chainRoll = Random.Range(0f, 1f);
         if (GlobalController.Instance.ChainBoltChance > chainRoll)
         {
-            //find nearby bubbles within radius
-            Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, GlobalController.Instance.ChainBoltRadius);
-            foreach (var hitCollider in hitColliders)
-            {
-                Bubble bubble = hitCollider.GetComponent<Bubble>();
-                if (bubble != null && !bubble.Popped)
-                {
-                    bubble.Pop(chainCount + 1);
-                    break; //only pop one bubble
-                }
-            }
+            
+            Instantiate(GlobalPrefabLibrary.Instance.ChainBoltPrefab, transform.position, Quaternion.identity);
         }
     }
 }
 
+public class PopData
+{
+
+    public PopData(PopType type)
+    {
+        Type = type;
+        chainCount = 0;
+    }
+
+
+    public PopType Type;
+    public int chainCount;
+
+}
+
+public enum PopType
+{
+    Mouse,
+    Critical,
+    ChainBolt,
+    Caltrop
+}
 public enum BubbleType
 {
     Normal,

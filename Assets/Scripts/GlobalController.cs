@@ -30,7 +30,7 @@ public class GlobalController : MonoBehaviour
 
 
     public float CaltropChance = 0; //chance to spawn caltrops on pop
-    public bool CaltropSeek = false; //if true, caltrops will seek nearby enemies
+    public bool CaltropSeek  = false; //if true, caltrops will seek nearby enemies
 
 
     //make an event that gets called when you become corrupt
