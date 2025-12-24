@@ -82,12 +82,17 @@ public class Bubble : MonoBehaviour
 
 
         //chain bolt
-        float chainRoll = Random.Range(0f, 1f);
-        if (GlobalController.Instance.ChainBoltChance > chainRoll)
+
+        if (pData.Type != PopType.ChainBolt)
         {
-            
-            Instantiate(GlobalPrefabLibrary.Instance.ChainBoltPrefab, transform.position, Quaternion.identity);
+            float chainRoll = Random.Range(0f, 1f);
+            if (GlobalController.Instance.ChainBoltChance > chainRoll)
+            {
+
+                Instantiate(GlobalPrefabLibrary.Instance.ChainBoltPrefab, transform.position, Quaternion.identity);
+            }
         }
+        
     }
 }
 
