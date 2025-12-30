@@ -32,6 +32,8 @@ public class GlobalController : MonoBehaviour
     public float CaltropChance = 0; //chance to spawn caltrops on pop
     public bool CaltropSeek  = false; //if true, caltrops will seek nearby enemies
 
+    public int BubblesSpawned = 0; //total number of popped bubbles
+
 
     //make an event that gets called when you become corrupt
     public event System.Action OnCorrupt;

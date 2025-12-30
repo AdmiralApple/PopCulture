@@ -11,6 +11,8 @@ public class BubbleSpawner : MonoBehaviour
 
     public Transform SpawnFirstPoint;
 
+    
+
     [Header("Row Rules")]
     public int maxBubblesPerRow = 8;
     public float HorizontalGap = 0.1f;     // extra space between rows (world units)
@@ -59,6 +61,8 @@ public class BubbleSpawner : MonoBehaviour
             Quaternion rot = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
             GameObject prefabToSpawn = GetBubblePrefabForSpawn();
             Instantiate(prefabToSpawn, pos, rot, transform);
+
+            GlobalController.Instance.BubblesSpawned += 1;
         }
 
         Frame1or2 = !Frame1or2;
@@ -66,6 +70,14 @@ public class BubbleSpawner : MonoBehaviour
 
     GameObject GetBubblePrefabForSpawn()
     {
+        //special corrupt bubble spawn condition
+        int totalSpawns = GlobalController.Instance.BubblesSpawned;
+        if (totalSpawns == 100 || totalSpawns == 500 || totalSpawns%1000 == 0){
+            return SpecialBubbleVariants.Find(x => x.type == BubbleType.Corrupt)?.Prefab;
+        }
+
+
+
         float roll = Random.value;
         float cumulative = 0f;
 
