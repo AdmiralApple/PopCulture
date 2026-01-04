@@ -26,6 +26,7 @@ public class GlobalController : MonoBehaviour
     public float ChainBoltRadius = 1; //on pop, chance to chain bolt to nearby bubbles
     public float ChainBoltChance = 0; //chance to chain bolt on pop
     public int ChainBoltMaxJumps = 1; //max jumps for chain bolt
+    public bool ChainBoltCanSpawnChainBolt = false; //if true, chain bolts can spawn more chain bolts
 
 
 

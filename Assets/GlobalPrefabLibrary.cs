@@ -7,6 +7,7 @@ public class GlobalPrefabLibrary : MonoBehaviour
 
     public static GlobalPrefabLibrary Instance;
     public GameObject ChainBoltPrefab;
+    public GameObject CaltropPrefab;
 
     private void Awake()
     {

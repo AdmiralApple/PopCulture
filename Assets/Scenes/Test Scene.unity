@@ -2579,7 +2579,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_Name
-      value: Expand mouse size circle
+      value: CORRUPT Chain Bolt Inf Jump (2)
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive
@@ -4709,7 +4709,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_Name
-      value: Unlock mouse size circle
+      value: CORRUPT Chain Bolt Inf Jump (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive

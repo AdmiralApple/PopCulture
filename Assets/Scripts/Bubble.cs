@@ -83,7 +83,7 @@ public class Bubble : MonoBehaviour
 
         //chain bolt
 
-        if (pData.Type != PopType.ChainBolt)
+        if (pData.Type != PopType.ChainBolt || GlobalController.Instance.ChainBoltCanSpawnChainBolt)
         {
             float chainRoll = Random.Range(0f, 1f);
             if (GlobalController.Instance.ChainBoltChance > chainRoll)
@@ -92,7 +92,17 @@ public class Bubble : MonoBehaviour
                 Instantiate(GlobalPrefabLibrary.Instance.ChainBoltPrefab, transform.position, Quaternion.identity);
             }
         }
-        
+
+        //caltrop
+        if (pData.Type != PopType.Caltrop)
+        {
+            float caltropRoll = Random.Range(0f, 1f);
+            if (GlobalController.Instance.CaltropChance > caltropRoll)
+            {
+                GameObject caltrop = Instantiate(GlobalPrefabLibrary.Instance.CaltropPrefab, transform.position, Quaternion.identity);
+            }
+        }
+
     }
 }
 
