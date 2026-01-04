@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 6141277280514779515}
   - component: {fileID: 8173418280045922779}
   - component: {fileID: 7615398627214090593}
+  - component: {fileID: 7933019054194831370}
   m_Layer: 0
   m_Name: bubble
   m_TagString: Bubble
@@ -131,10 +132,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911780604ff6eeb4cab4afee2c93f668, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Value: 1
+  BaseValue: 1
   UnpoppedSprite: {fileID: 941985152006639927}
   PoppedSprite: {fileID: 8324477885523491699}
   Popped: 0
+  Type: 0
 --- !u!58 &7615398627214090593
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -170,6 +172,33 @@ CircleCollider2D:
   m_Offset: {x: -0.0056562424, y: 0}
   serializedVersion: 2
   m_Radius: 0.6470537
+--- !u!50 &7933019054194831370
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 995966295185243269}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &8324477885523491699
 GameObject:
   m_ObjectHideFlags: 0

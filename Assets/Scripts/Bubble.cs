@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,16 +11,33 @@ public class Bubble : MonoBehaviour
     public GameObject PoppedSprite;
     public bool Popped = false;
 
+    public event Action<Bubble> OnBubblePopped;
+    public event Action<Bubble> OnBubbleDestroyed;
+
     public BubbleType Type = BubbleType.Normal;
 
     //moves right from speed
 
+    //move right, ignoring rotation
+    void Start()
+    {
+        // Ensure the bubble has a Rigidbody2D for physics-based movement
+        if (GetComponent<Rigidbody2D>() == null)
+        {
+            Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
+            rb.gravityScale = 0f; // No gravity for bubbles
+            rb.freezeRotation = true; // Prevent rotation
+        }
+    }
+
     void Update()
     {
-        //move right, ignoring rotation
-        transform.position += Vector3.right * GlobalController.Instance.WrapperSpeed * Time.deltaTime;
-
-
+        // Set velocity directly using Rigidbody2D for physics-based movement
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.right * GlobalController.Instance.WrapperSpeed;
+        }
     }
 
     //on click, pop the bubble
@@ -49,7 +67,7 @@ public class Bubble : MonoBehaviour
         switch(Type)
         {
             case BubbleType.Golden:
-                float critChanceIncreaseChance = Random.Range(0f, 1f);
+                float critChanceIncreaseChance = UnityEngine.Random.Range(0f, 1f);
                 if (critChanceIncreaseChance < GlobalController.Instance.CritIncreaseOnGoldPopChance)
                 {
                     GlobalController.Instance.critChance += 0.01f;
@@ -66,7 +84,7 @@ public class Bubble : MonoBehaviour
         float popValue = BaseValue + GlobalController.Instance.PopValueModifier;
 
         //crit
-        float critRoll = Random.Range(0f, 1f);
+        float critRoll = UnityEngine.Random.Range(0f, 1f);
         if (GlobalController.Instance.critChance > critRoll)
         {
             //critical pop
@@ -77,15 +95,13 @@ public class Bubble : MonoBehaviour
         GlobalController.Instance.AddPops(popValue);
 
         Popped = true;
-
-
-
+        OnBubblePopped?.Invoke(this);
 
         //chain bolt
 
         if (pData.Type != PopType.ChainBolt || GlobalController.Instance.ChainBoltCanSpawnChainBolt)
         {
-            float chainRoll = Random.Range(0f, 1f);
+            float chainRoll = UnityEngine.Random.Range(0f, 1f);
             if (GlobalController.Instance.ChainBoltChance > chainRoll)
             {
 
@@ -96,13 +112,18 @@ public class Bubble : MonoBehaviour
         //caltrop
         if (pData.Type != PopType.Caltrop)
         {
-            float caltropRoll = Random.Range(0f, 1f);
+            float caltropRoll = UnityEngine.Random.Range(0f, 1f);
             if (GlobalController.Instance.CaltropChance > caltropRoll)
             {
                 GameObject caltrop = Instantiate(GlobalPrefabLibrary.Instance.CaltropPrefab, transform.position, Quaternion.identity);
             }
         }
 
+    }
+
+    private void OnDestroy()
+    {
+        OnBubbleDestroyed?.Invoke(this);
     }
 }
 

@@ -8,6 +8,10 @@ public class BubbleSpawner : MonoBehaviour
     public GameObject BubblePrefab;
     [Tooltip("Optional special-case prefabs with their own spawn slices.")]
     public List<BubbleVariant> SpecialBubbleVariants = new List<BubbleVariant>();
+    [SerializeField, Tooltip("Runtime list of bubbles that have not been popped yet.")]
+
+    private List<Bubble> unpoppedBubbles = new List<Bubble>();
+    public IReadOnlyList<Bubble> UnpoppedBubbles => unpoppedBubbles;
 
     public Transform SpawnFirstPoint;
 
@@ -60,7 +64,8 @@ public class BubbleSpawner : MonoBehaviour
             Vector3 pos = new Vector3(SpawnFirstPoint.position.x, spawnY, SpawnFirstPoint.position.z);
             Quaternion rot = Quaternion.Euler(0, 0, Random.Range(0f, 360f));
             GameObject prefabToSpawn = GetBubblePrefabForSpawn();
-            Instantiate(prefabToSpawn, pos, rot, transform);
+            GameObject spawnedBubble = Instantiate(prefabToSpawn, pos, rot, transform);
+            RegisterBubble(spawnedBubble);
 
             GlobalController.Instance.BubblesSpawned += 1;
         }
@@ -73,6 +78,7 @@ public class BubbleSpawner : MonoBehaviour
         //special corrupt bubble spawn condition
         int totalSpawns = GlobalController.Instance.BubblesSpawned;
         if (totalSpawns == 100 || totalSpawns == 500 || totalSpawns%1000 == 0){
+            print("Spawning Corrupt Bubble! Spawn count: " + totalSpawns);
             return SpecialBubbleVariants.Find(x => x.type == BubbleType.Corrupt)?.Prefab;
         }
 
@@ -95,6 +101,30 @@ public class BubbleSpawner : MonoBehaviour
         }
 
         return BubblePrefab;
+    }
+
+    void RegisterBubble(GameObject spawnedBubble)
+    {
+        if (spawnedBubble == null)
+            return;
+
+        Bubble bubbleComponent = spawnedBubble.GetComponent<Bubble>();
+        if (bubbleComponent == null)
+            return;
+
+        unpoppedBubbles.Add(bubbleComponent);
+        bubbleComponent.OnBubblePopped += HandleBubbleRemoved;
+        bubbleComponent.OnBubbleDestroyed += HandleBubbleRemoved;
+    }
+
+    void HandleBubbleRemoved(Bubble bubble)
+    {
+        if (bubble == null)
+            return;
+
+        bubble.OnBubblePopped -= HandleBubbleRemoved;
+        bubble.OnBubbleDestroyed -= HandleBubbleRemoved;
+        unpoppedBubbles.Remove(bubble);
     }
 
     [System.Serializable]

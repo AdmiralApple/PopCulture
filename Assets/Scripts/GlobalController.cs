@@ -32,6 +32,8 @@ public class GlobalController : MonoBehaviour
 
     public float CaltropChance = 0; //chance to spawn caltrops on pop
     public bool CaltropSeek  = false; //if true, caltrops will seek nearby enemies
+    public float CaltropSeekRange = 1; //range at which caltrops will seek enemies
+    public float CaltropSeekSpeed = 5; //speed at which caltrops will seek enemies
 
     public int BubblesSpawned = 0; //total number of popped bubbles
 
