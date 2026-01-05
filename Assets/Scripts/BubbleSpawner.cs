@@ -77,7 +77,7 @@ public class BubbleSpawner : MonoBehaviour
     {
         //special corrupt bubble spawn condition
         int totalSpawns = GlobalController.Instance.BubblesSpawned;
-        if (totalSpawns == 100 || totalSpawns == 500 || totalSpawns%1000 == 0){
+        if (totalSpawns == 100 || totalSpawns == 500 || (totalSpawns%1000 == 0 && totalSpawns !=0)){
             print("Spawning Corrupt Bubble! Spawn count: " + totalSpawns);
             return SpecialBubbleVariants.Find(x => x.type == BubbleType.Corrupt)?.Prefab;
         }

@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 388e8e01e2a5848438238eb1310f7415, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5294118}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -137,6 +137,10 @@ MonoBehaviour:
   PoppedSprite: {fileID: 8324477885523491699}
   Popped: 0
   Type: 0
+  PopSounds:
+  - {fileID: 8300000, guid: acbf2b5bfa194294aafe71619ed83281, type: 3}
+  - {fileID: 8300000, guid: f434a342aca096345906f55c08d33fff, type: 3}
+  - {fileID: 8300000, guid: 97e4b714dd0351144b858f4ce1a714e0, type: 3}
 --- !u!58 &7615398627214090593
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -273,7 +277,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 69e70ead2fb877d4da312a8bf0804a0b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.5294118}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

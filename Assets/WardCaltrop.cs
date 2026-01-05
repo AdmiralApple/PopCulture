@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class WardCaltrop : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class WardCaltrop : MonoBehaviour
         if (target == null)
             return;
 
-        Debug.Log("Caltrop collided with " + target.name);
+        //Debug.Log("Caltrop collided with " + target.name);
         if (target.CompareTag("Bubble"))
         {
             Bubble bubble = target.GetComponent<Bubble>();
@@ -30,14 +31,15 @@ public class WardCaltrop : MonoBehaviour
                 PopData popData = new PopData(PopType.Caltrop);
                 popData.chainCount = 0; // Caltrop pops do not chain
                 bubble.Pop(popData);
+                Destroy(gameObject);
             }
         }
-        Destroy(gameObject);
+        
     }
 
     private void Update()
     {
-        if(GlobalController.Instance.CaltropSeek == false)
+        if (GlobalController.Instance.CaltropSeek == false)
         {
             return;
         }

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody2D), typeof(CircleCollider2D))]
 public class Bubble : MonoBehaviour
 {
     public float BaseValue = 1f;
@@ -16,24 +17,33 @@ public class Bubble : MonoBehaviour
 
     public BubbleType Type = BubbleType.Normal;
 
-    //moves right from speed
+    Rigidbody2D rb;
+    CircleCollider2D circleCollider;
 
-    //move right, ignoring rotation
-    void Start()
+    public List<AudioClip> PopSounds;
+
+    public static float PopVolume = 1.0f;
+    void Awake()
     {
-        // Ensure the bubble has a Rigidbody2D for physics-based movement
-        if (GetComponent<Rigidbody2D>() == null)
+        rb = GetComponent<Rigidbody2D>();
+        circleCollider = GetComponent<CircleCollider2D>();
+
+        if (rb != null)
         {
-            Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
-            rb.gravityScale = 0f; // No gravity for bubbles
-            rb.freezeRotation = true; // Prevent rotation
+            rb.bodyType = RigidbodyType2D.Dynamic;
+            rb.gravityScale = 0f;
+            rb.freezeRotation = true;
+            rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
+        }
+
+        if (circleCollider != null)
+        {
+            circleCollider.isTrigger = false;
         }
     }
 
     void Update()
     {
-        // Set velocity directly using Rigidbody2D for physics-based movement
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
             rb.velocity = Vector2.right * GlobalController.Instance.WrapperSpeed;
@@ -62,9 +72,11 @@ public class Bubble : MonoBehaviour
         if(pData.chainCount > GlobalController.Instance.ChainBoltMaxJumps) return;
         UnpoppedSprite.SetActive(false);
         PoppedSprite.SetActive(true);
+        Popped = true;
+        OnBubblePopped?.Invoke(this);
+        PlayRandomPopSound();
 
-
-        switch(Type)
+        switch (Type)
         {
             case BubbleType.Golden:
                 float critChanceIncreaseChance = UnityEngine.Random.Range(0f, 1f);
@@ -94,8 +106,7 @@ public class Bubble : MonoBehaviour
         }
         GlobalController.Instance.AddPops(popValue);
 
-        Popped = true;
-        OnBubblePopped?.Invoke(this);
+        
 
         //chain bolt
 
@@ -124,6 +135,30 @@ public class Bubble : MonoBehaviour
     private void OnDestroy()
     {
         OnBubbleDestroyed?.Invoke(this);
+    }
+
+    void PlayRandomPopSound()
+    {
+        if (PopSounds.Count == 0) return;
+        int index = UnityEngine.Random.Range(0, PopSounds.Count);
+        AudioClip clip = PopSounds[index];
+
+        // Create a temporary audio source to add pitch and volume variation
+        GameObject tempAudio = new GameObject("TempPopAudio");
+        tempAudio.transform.position = transform.position;
+        AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.pitch = UnityEngine.Random.Range(0.8f, 1.0f); // Slight pitch variation
+
+        if(Type == BubbleType.Corrupt)
+        {
+            audioSource.pitch = UnityEngine.Random.Range(0.2f, 0.4f); // Lower pitch for corrupt bubbles
+        }
+
+        audioSource.volume = UnityEngine.Random.Range(0.4f, 1.0f); // Slight volume variation
+        audioSource.volume *= PopVolume; // Apply global pop volume
+        audioSource.Play();
+        Destroy(tempAudio, clip.length / audioSource.pitch);
     }
 }
 
