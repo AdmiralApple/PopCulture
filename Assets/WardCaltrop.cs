@@ -8,10 +8,23 @@ public class WardCaltrop : MonoBehaviour
     Bubble SeekedBubble;
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print("Caltrop collided with " + collision.gameObject.name);
-        if (collision.gameObject.CompareTag("Bubble"))
+        HandleCollisionWithBubble(collision.gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        HandleCollisionWithBubble(other.gameObject);
+    }
+
+    private void HandleCollisionWithBubble(GameObject target)
+    {
+        if (target == null)
+            return;
+
+        Debug.Log("Caltrop collided with " + target.name);
+        if (target.CompareTag("Bubble"))
         {
-            Bubble bubble = collision.gameObject.GetComponent<Bubble>();
+            Bubble bubble = target.GetComponent<Bubble>();
             if (bubble != null && !bubble.Popped)
             {
                 PopData popData = new PopData(PopType.Caltrop);
