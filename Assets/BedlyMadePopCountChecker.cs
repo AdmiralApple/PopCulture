@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class BedlyMadePopCountChecker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public APL_SlowEnable aplSlowEnable;
+    bool revieled = false;
+    public int PopCouhntCheck = 10;
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (!revieled && GlobalController.Instance.TotalPops >= PopCouhntCheck)
+        {
+            aplSlowEnable.SlowEnable();
+            revieled = true;
+        }
     }
 }

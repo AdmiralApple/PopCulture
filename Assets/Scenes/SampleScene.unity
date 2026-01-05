@@ -3409,7 +3409,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Upgrades
+  m_text: 'Upgrades
+
+    (space)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3905,7 +3907,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 1
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -5303,6 +5305,8 @@ GameObject:
   - component: {fileID: 1386176361}
   - component: {fileID: 1386176364}
   - component: {fileID: 1386176365}
+  - component: {fileID: 1386176366}
+  - component: {fileID: 1386176367}
   m_Layer: 5
   m_Name: Toggle SkillTree Button
   m_TagString: Untagged
@@ -5452,6 +5456,33 @@ MonoBehaviour:
   RendererToEnable: {fileID: 1386176359}
   FadeInDuration: 2
   FadeEase: 3
+--- !u!114 &1386176366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386176359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80cfe8465436964a9dbb01caa30a583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aplSlowEnable: {fileID: 1386176365}
+  PopCouhntCheck: 10
+--- !u!114 &1386176367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386176359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c459ad18924bb54aab5258ac7a41106, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hotkeys: 20000000
 --- !u!1 &1498036156
 GameObject:
   m_ObjectHideFlags: 0
@@ -7644,6 +7675,8 @@ GameObject:
   - component: {fileID: 2146365148}
   - component: {fileID: 2146365147}
   - component: {fileID: 2146365146}
+  - component: {fileID: 2146365150}
+  - component: {fileID: 2146365149}
   m_Layer: 5
   m_Name: Pop counter
   m_TagString: Untagged
@@ -7712,8 +7745,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 16777215
+  m_fontColor: {r: 1, g: 1, b: 1, a: 0}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -7780,6 +7813,35 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2146365144}
   m_CullTransparentMesh: 1
+--- !u!114 &2146365149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146365144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80cfe8465436964a9dbb01caa30a583, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aplSlowEnable: {fileID: 2146365150}
+  PopCouhntCheck: 1
+--- !u!114 &2146365150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2146365144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40ec4f4da9a0a04e9afa6a5d092633b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RendererToEnable: {fileID: 2146365144}
+  FadeInDuration: 2
+  FadeEase: 2
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
