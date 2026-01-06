@@ -13,9 +13,13 @@ public class BubbleArrow : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<MouseHitbox>())
+        MouseHitbox mouseHitbox = collision.gameObject.GetComponent<MouseHitbox>();
+        if (mouseHitbox == null)
         {
-            print("Arrow hit the mouse hitbox!");
+            return;
         }
+
+        mouseHitbox.TryApplyArrowHit();
+        Destroy(gameObject);
     }
 }
