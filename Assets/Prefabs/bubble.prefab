@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2264735811419254163}
   - component: {fileID: 3791868399432828533}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpriteUnPopped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ GameObject:
   - component: {fileID: 8173418280045922779}
   - component: {fileID: 7615398627214090593}
   - component: {fileID: 7933019054194831370}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: bubble
   m_TagString: Bubble
   m_Icon: {fileID: 0}
@@ -156,7 +156,7 @@ CircleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -213,7 +213,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2777560718330256847}
   - component: {fileID: 4133679994509506323}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SpritePopped
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -190,3 +190,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c23ce29bcb9e6549911e33c4b5a057a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ArrowPrefab: {fileID: 1583744896481715444, guid: 428ce7fd70c454648923696c2539a872, type: 3}
+  thisBubble: {fileID: 0}
+  ArrowEverySeconds: 2

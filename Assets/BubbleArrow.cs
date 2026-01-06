@@ -15,7 +15,7 @@ public class BubbleArrow : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<MouseHitbox>())
         {
-
+            print("Arrow hit the mouse hitbox!");
         }
     }
 }
