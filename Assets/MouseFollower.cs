@@ -10,6 +10,12 @@ public class MouseFollower : MonoBehaviour
     [SerializeField]
     private Camera targetCamera;
 
+    [SerializeField]
+    private bool rotateTowardMouse;
+
+    [SerializeField]
+    private float rotationOffsetDegrees;
+
     private Vector3 anchorLocalPosition;
 
     private void Awake()
@@ -58,6 +64,24 @@ public class MouseFollower : MonoBehaviour
             : desiredWorldPosition;
 
         transform.localPosition = desiredLocalPosition;
+
+        if (rotateTowardMouse)
+        {
+            RotateToward(targetCamera, anchorWorld, desiredWorldPosition);
+        }
+    }
+
+    private void RotateToward(Camera camera, Vector3 anchorWorld, Vector3 targetWorld)
+    {
+        Vector3 direction = targetWorld - anchorWorld;
+        direction.z = 0f;
+        if (direction.sqrMagnitude <= Mathf.Epsilon)
+        {
+            return;
+        }
+
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg + rotationOffsetDegrees;
+        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     private Vector3 GetAnchorWorldPosition()
