@@ -53,6 +53,9 @@ public abstract class NodeData : MonoBehaviour
             case PrerequisiteType.AnyParentUnlocked:
                 //Prerequisites.Add(new AnyParentUnlockedPrereq());
                 break;
+            case PrerequisiteType.AllParentsUnlocked:
+                Prerequisites.Add(new AllParentsUnlockedPrereq());
+                break;
             case PrerequisiteType.SpecificNodeUnlocked:
                 // Specific node prerequisite logic can be added here.
                 break;
@@ -84,6 +87,7 @@ public enum PrerequisiteType
 {
     None,
     AllParentsFullyUpgraded,
+    AllParentsUnlocked,
     AnyParentUnlocked,
     SpecificNodeUnlocked
 }

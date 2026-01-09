@@ -72,3 +72,29 @@ public class AllParentsFullyUpgradedPrereq : Prerequisite
         return true;
     }
 }
+
+public class AllParentsUnlockedPrereq : Prerequisite
+{
+    public override bool IsMet(SkillTreeNode node)
+    {
+        if (node == null || node.ParentNodes == null || node.ParentNodes.Count == 0)
+        {
+            return false;
+        }
+
+
+        foreach (var parent in node.ParentNodes)
+        {
+            if (parent == null)
+            {
+                return false;
+            }
+            if (!parent.IsUnlocked)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+}

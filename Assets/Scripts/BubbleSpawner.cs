@@ -85,8 +85,8 @@ public class BubbleSpawner : MonoBehaviour
         //testing for garunteed corrupt
         if (totalSpawns == 0)
         {
-            print("Spawning Corrupt Bubble! Spawn count: " + totalSpawns);
-            return SpecialBubbleVariants.Find(x => x.type == BubbleType.Corrupt)?.Prefab;
+            //print("Spawning Corrupt Bubble! Spawn count: " + totalSpawns);
+            //return SpecialBubbleVariants.Find(x => x.type == BubbleType.Corrupt)?.Prefab;
         }
 
 

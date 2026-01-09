@@ -89,5 +89,13 @@ public class GlobalController : MonoBehaviour
         CurrentPops = Mathf.Max(0, CurrentPops - amount);
     }
 
+    [Button]
+    public void TestSetPops()
+    {
+        CurrentPops = 9999999999;
+        TotalPops = 9999999999;
+        CurrentCorruptionTokens = 9999;
+    }
+
 
 }
