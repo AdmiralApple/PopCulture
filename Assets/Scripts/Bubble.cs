@@ -102,6 +102,8 @@ public class Bubble : MonoBehaviour
             //critical pop
             Debug.Log("Critical Pop!");
 
+            SpawnCritPopup();
+
             popValue *= GlobalController.Instance.critMultiplier;
         }
         GlobalController.Instance.AddPops(popValue);
@@ -130,6 +132,13 @@ public class Bubble : MonoBehaviour
             }
         }
 
+    }
+
+    void SpawnCritPopup()
+    {
+        GameObject popupObj = Instantiate(GlobalReferenceLibrary.library.CritPopup.gameObject, transform.position, Quaternion.identity);
+        APL_PopupText popupText = popupObj.GetComponent<APL_PopupText>();
+        popupText.BeginPopup();
     }
 
     private void OnDestroy()
