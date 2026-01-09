@@ -22,12 +22,29 @@ public class SkillTreeNode : MonoBehaviour
 
     public SkillNodeTooltip Tooltip;
 
+    [Title("Interaction")]
+    [Tooltip("Camera used for hover/click checks. Defaults to Camera.main when null.")]
+    public Camera InteractionCamera;
+
     public bool IsUnlocked => CurrentLevel > 0;
 
     public TextMeshPro LevelText;
 
     [Title("Debug")]
     [SerializeField] public bool HideNodesOnRebuild = true;
+
+    private Collider2D nodeCollider2D;
+    private Collider nodeCollider3D;
+    private bool pointerHovering;
+
+    private void Awake()
+    {
+        nodeCollider2D = GetComponent<Collider2D>();
+        if (nodeCollider2D == null)
+        {
+            nodeCollider3D = GetComponent<Collider>();
+        }
+    }
 
     private void OnEnable()
     {
@@ -37,6 +54,10 @@ public class SkillTreeNode : MonoBehaviour
 
     private void OnDisable()
     {
+        if (pointerHovering)
+        {
+            HandlePointerExit();
+        }
         UnregisterNode();
     }
 
@@ -60,6 +81,8 @@ public class SkillTreeNode : MonoBehaviour
         {
             CanBuyIndicator.SetActive(CanPurchase());
         }
+
+        UpdatePointerState();
     }
 
 
@@ -317,19 +340,6 @@ public class SkillTreeNode : MonoBehaviour
     }
 
 
-    private void OnMouseDown()
-    {
-        if(TryPurchase())
-        {
-            Debug.Log($"Purchased node: {name}");
-            UpdateVisuals();
-        }
-        else
-        {
-            Debug.Log($"Failed to purchase node: {name}");
-        }
-    }
-
     private void UpdateVisuals()
     {
         if(Data == null || LevelText == null)
@@ -340,15 +350,99 @@ public class SkillTreeNode : MonoBehaviour
         Tooltip.SetData(this);
     }
 
-
-    private void OnMouseEnter()
+    private void UpdatePointerState()
     {
+        var camera = ResolveInteractionCamera();
+        if (camera == null)
+        {
+            return;
+        }
+
+        if (nodeCollider2D == null && nodeCollider3D == null)
+        {
+            return;
+        }
+
+        bool pointerOver = IsPointerOverNode(camera);
+        if (pointerOver)
+        {
+            if (!pointerHovering)
+            {
+                HandlePointerEnter();
+            }
+
+            if (Input.GetMouseButtonDown(0))
+            {
+                HandlePointerDown();
+            }
+        }
+        else if (pointerHovering)
+        {
+            HandlePointerExit();
+        }
+    }
+
+    private Camera ResolveInteractionCamera()
+    {
+        if (InteractionCamera != null)
+        {
+            return InteractionCamera;
+        }
+
+        return Camera.main;
+    }
+
+    private bool IsPointerOverNode(Camera camera)
+    {
+        if (nodeCollider2D != null)
+        {
+            Vector3 mouseWorld = camera.ScreenToWorldPoint(Input.mousePosition);
+            Vector2 mousePoint = new Vector2(mouseWorld.x, mouseWorld.y);
+            return nodeCollider2D.OverlapPoint(mousePoint);
+        }
+
+        if (nodeCollider3D != null)
+        {
+            Ray ray = camera.ScreenPointToRay(Input.mousePosition);
+            return nodeCollider3D.Raycast(ray, out _, Mathf.Infinity);
+        }
+
+        return false;
+    }
+
+    private void HandlePointerEnter()
+    {
+        pointerHovering = true;
+        if (Tooltip == null)
+        {
+            return;
+        }
+
         Tooltip.gameObject.SetActive(true);
         Tooltip.SetData(this);
     }
 
-    private void OnMouseExit()
+    private void HandlePointerExit()
     {
+        pointerHovering = false;
+        if (Tooltip == null)
+        {
+            return;
+        }
+
         Tooltip.gameObject.SetActive(false);
+    }
+
+    private void HandlePointerDown()
+    {
+        if (TryPurchase())
+        {
+            Debug.Log($"Purchased node: {name}");
+            UpdateVisuals();
+        }
+        else
+        {
+            Debug.Log($"Failed to purchase node: {name}");
+        }
     }
 }
