@@ -198,13 +198,20 @@ public class SkillTreeNode : MonoBehaviour
             foreach (var parent in child.ParentNodes)
             {
                 print($"Parent: {parent.name}, Level: {parent.CurrentLevel}/{parent.Data.MaxLevel}");
-                parent.ChildsToArrows[child].gameObject.SetActive(true);
-                parent.ChildsToArrows[child].gameObject.GetComponent<APL_SlowEnable>().SlowEnable();
+                if (parent.ChildsToArrows[child].gameObject.activeSelf == false)
+                {
+
+                    parent.ChildsToArrows[child].gameObject.SetActive(true);
+                    parent.ChildsToArrows[child].gameObject.GetComponent<APL_SlowEnable>().SlowEnable();
+                }
             }
 
+            if(child.gameObject.activeSelf == false)
+            {
 
-            child.gameObject.SetActive(true);
-            child.gameObject.GetComponent<APL_SlowEnable>().SlowEnable();
+                child.gameObject.SetActive(true);
+                child.gameObject.GetComponent<APL_SlowEnable>().SlowEnable();
+            }
         }
 
         if (Data != null)

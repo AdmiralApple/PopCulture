@@ -198,5 +198,6 @@ public enum BubbleType
     Normal,
     Corrupt,
     Golden,
-    Shield
+    Shield,
+    Archer
 }

@@ -3888,12 +3888,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7cbc18b3dbe4f246aec096c3e6a7b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: 
-  Description: 
+  DisplayName: Sigil Inception
+  Description: Fire Sigil pops can now spawn Fire Sigil
   BaseCost: 1
   MaxLevel: 1
   costIncrease: 0
-  IsCorruptNode: 0
+  IsCorruptNode: 1
   BasePrereq: 0
   IsActive: 0
 --- !u!4 &851027258 stripped
@@ -4101,14 +4101,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6c09adf8c0fa0e498c32a9619a9a05a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: 
-  Description: 
+  DisplayName: Mouse size UP!
+  Description: Increase the AOE of the mouse
   BaseCost: 20000
   MaxLevel: 3
   costIncrease: 5000
   IsCorruptNode: 0
   BasePrereq: 0
-  SizeIncrease: 1.25
+  SizeIncrease: 2
 --- !u!1001 &922485965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6298,8 +6298,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e56debd13df55a4581afe66bd8d378a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: 
-  Description: 
+  DisplayName: CHAIN.  CHAIN.
+  Description: Chain Bolt pops can now spawn Chain Bolts
   BaseCost: 0
   MaxLevel: 1
   costIncrease: 0
@@ -6581,7 +6581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ff9479c6a62794e88995aaf639c5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: Mouse Size UP!
+  DisplayName: Mouse AOE
   Description: Creates a circle that can pop bubbles.
   BaseCost: 15000
   MaxLevel: 1
@@ -8048,10 +8048,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f0a9fd689d14429c50912fa33eb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: 
-  Description: 
+  DisplayName: Fire Sigil Chance UP!
+  Description: Increases the chance to spawn a fire sigil on pop.
   BaseCost: 350
-  MaxLevel: 9
+  MaxLevel: 3
   costIncrease: 100
   IsCorruptNode: 0
   BasePrereq: 0
@@ -9272,7 +9272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Summon the Final Bubble
-  Description: also... how are you reading this??
+  Description: also, if you're reading this, that means i programmed wrong
   BaseCost: 1
   MaxLevel: 1
   costIncrease: 0
@@ -9880,12 +9880,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a45ee80f0ce0aa34e8295accf2fa9d2f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: 
-  Description: 
+  DisplayName: CHAIN. FIRE.  CHAIN.
+  Description: EVERYTHING CAN SPAWN EVERYTHING
   BaseCost: 1
   MaxLevel: 1
   costIncrease: 0
-  IsCorruptNode: 0
+  IsCorruptNode: 1
   BasePrereq: 0
   IsActive: 0
 --- !u!1 &1978799434
@@ -9928,7 +9928,7 @@ MonoBehaviour:
   - type: 2
     Prefab: {fileID: 4124427299061286741, guid: 5f285cafe44123e4b9e9e577b2f4d5ca, type: 3}
     Chance: 0
-  - type: 0
+  - type: 4
     Prefab: {fileID: 7818443605899349300, guid: 527987d62c3d4334c9d4518ade4c51d8, type: 3}
     Chance: 0
   unpoppedBubbles: []
