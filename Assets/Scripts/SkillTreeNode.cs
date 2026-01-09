@@ -113,7 +113,18 @@ public class SkillTreeNode : MonoBehaviour
         }
 
         var controller = GlobalController.Instance;
-        if (controller == null || controller.CurrentPops < Data.PostCalcCost(CurrentLevel))
+        if (controller == null)
+        {
+            return false;
+        }
+
+        var popCost = Data.PostCalcCost(CurrentLevel);
+        if (popCost > 0 && controller.CurrentPops < popCost)
+        {
+            return false;
+        }
+
+        if (Data.IsCorruptNode && controller.CurrentCorruptionTokens <= 0)
         {
             return false;
         }
@@ -129,7 +140,16 @@ public class SkillTreeNode : MonoBehaviour
         }
 
         var controller = GlobalController.Instance;
-        controller.RemovePops(Data.PostCalcCost(CurrentLevel));
+        var popCost = Data.PostCalcCost(CurrentLevel);
+        if (popCost > 0)
+        {
+            controller.RemovePops(popCost);
+        }
+
+        if (Data.IsCorruptNode)
+        {
+            controller.CurrentCorruptionTokens = Mathf.Max(0, controller.CurrentCorruptionTokens - 1);
+        }
 
         CurrentLevel++;
 

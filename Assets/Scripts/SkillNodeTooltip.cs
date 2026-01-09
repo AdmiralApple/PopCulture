@@ -19,8 +19,39 @@ public class SkillNodeTooltip : MonoBehaviour
             return;
         }
         NodeData data = skillTreeNode.Data;
+        bool hideData = data.IsCorruptNode && !skillTreeNode.IsUnlocked;
+        if (hideData)
+        {
+            TitleText.text = "???";
+            CostText.text = "Cost: ???";
+            DescriptionText.text = "???";
+            return;
+        }
+
         TitleText.text = data.DisplayName;
-        CostText.text = $"Cost: {data.PostCalcCost(skillTreeNode.CurrentLevel)}";
+        CostText.text = BuildCostText(data, skillTreeNode);
         DescriptionText.text = data.Description;
+    }
+
+    private string BuildCostText(NodeData data, SkillTreeNode node)
+    {
+        List<string> costParts = new();
+        int popCost = data.PostCalcCost(node.CurrentLevel);
+        if (popCost > 0)
+        {
+            costParts.Add($"{popCost} Pops");
+        }
+
+        if (data.IsCorruptNode)
+        {
+            costParts.Add("1 Corruption Token");
+        }
+
+        if (costParts.Count == 0)
+        {
+            return "Cost: Free";
+        }
+
+        return $"Cost: {string.Join(" + ", costParts)}";
     }
 }

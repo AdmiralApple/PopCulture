@@ -17,6 +17,10 @@ public abstract class NodeData : MonoBehaviour
 
     public int costIncrease = 0;
 
+    [Title("Corruption")]
+    [Tooltip("If true, this node costs a corruption token and stays secret until it is purchased.")]
+    public bool IsCorruptNode = false;
+
     [Title("Structure")]
     [Tooltip("All prerequisite conditions must be true before this node is revealed")]
     public List<Prerequisite> Prerequisites = new();
