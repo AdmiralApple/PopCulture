@@ -7,6 +7,7 @@ public class GlobalReferenceLibrary : MonoBehaviour
     public static GlobalReferenceLibrary library;
     public GameObject MouseClickCircle;
     public APL_PopupText CritPopup;
+    public BubbleSpawner BubbleSpawner;
     private void Awake()
     {
         if (library == null)

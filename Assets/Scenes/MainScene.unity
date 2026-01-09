@@ -381,6 +381,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &68674485 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 1868860731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &94050710 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
@@ -479,6 +484,18 @@ PrefabInstance:
       propertyPath: hideNodesOnRebuildInspector
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3818786
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5345911
+      objectReference: {fileID: 0}
     - target: {fileID: 7116320745435944352, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -487,6 +504,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1951467212}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -1322,6 +1342,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
   m_PrefabInstance: {fileID: 1860510887}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &327064426 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 1860510887}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &327064430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 327064426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab972e86d3690f94e81b3ad633aa8a99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Unwrap Speed MAX
+  Description: Greatly increases the speed that you unwrap the bubble wrap.  (More
+    speed == more spawns!)
+  BaseCost: 50000
+  MaxLevel: 99
+  costIncrease: 25000
+  IsCorruptNode: 0
+  BasePrereq: 2
+  SpeedDelta: 2
 --- !u!1001 &436514721
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1473,9 +1519,9 @@ MonoBehaviour:
   Description: 'Increases radius that bolts can chain to.
 
 '
-  BaseCost: 1
+  BaseCost: 450
   MaxLevel: 3
-  costIncrease: 0
+  costIncrease: 200
   IsCorruptNode: 0
   BasePrereq: 0
   chainBoltRadiusDelta: 1
@@ -1933,6 +1979,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &534689424 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 788361140}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &583805362
 GameObject:
   m_ObjectHideFlags: 0
@@ -2100,6 +2151,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MouseClickCircle: {fileID: 1378669249}
   CritPopup: {fileID: 1093534546766113182, guid: 33706d67b2430b649a7fff7c633250a2, type: 3}
+  BubbleSpawner: {fileID: 0}
 --- !u!4 &595783078
 Transform:
   m_ObjectHideFlags: 0
@@ -2115,6 +2167,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &603792259 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 812536723}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,6 +2738,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 896173713}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -2839,7 +2899,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Chain Bolt
-  Description: Pops now have a chance to pop nearby bubbles
+  Description: Pops now have a chance to summon a Chain Bolt
   BaseCost: 150
   MaxLevel: 1
   costIncrease: 0
@@ -2944,6 +3004,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1057801279}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -3177,6 +3240,18 @@ PrefabInstance:
       propertyPath: hideNodesOnRebuildInspector
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.g
+      value: 0.8695877
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7116320745435944352, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3185,6 +3260,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1858851439}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -3428,6 +3506,18 @@ PrefabInstance:
       propertyPath: hideNodesOnRebuildInspector
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.3060442
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.54088044
+      objectReference: {fileID: 0}
     - target: {fileID: 7116320745435944352, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -3436,6 +3526,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 812536728}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -3445,10 +3538,35 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
   m_PrefabInstance: {fileID: 812536723}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &812536728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 603792259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7cbc18b3dbe4f246aec096c3e6a7b3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: 
+  Description: 
+  BaseCost: 1
+  MaxLevel: 1
+  costIncrease: 0
+  IsCorruptNode: 0
+  BasePrereq: 0
+  IsActive: 0
 --- !u!4 &851027258 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
   m_PrefabInstance: {fileID: 731932160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &863616034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 2102383786}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &890801243
 GameObject:
@@ -3617,6 +3735,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1978799436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &896173709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 675880282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &896173713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 896173709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6c09adf8c0fa0e498c32a9619a9a05a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: 
+  Description: 
+  BaseCost: 20000
+  MaxLevel: 3
+  costIncrease: 5000
+  IsCorruptNode: 0
+  BasePrereq: 0
+  SizeIncrease: 1.25
 --- !u!1001 &922485965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3765,9 +3908,9 @@ MonoBehaviour:
   Description: 'Increases the amount of times a chainbolt can chain.
 
 '
-  BaseCost: 1
+  BaseCost: 3000
   MaxLevel: 2
-  costIncrease: 0
+  costIncrease: 3000
   IsCorruptNode: 0
   BasePrereq: 0
   chainBoltRadiusDelta: 0
@@ -4258,6 +4401,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetRenderer: {fileID: 996609906}
   manualWorldWidth: 0
+--- !u!1 &1057801275 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 731932160}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1057801279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057801275}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e11cb740f712c3246baf582741ef5731, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Spawn Up MAX!
+  Description: Greatly increase the chance for a bubble to spawn.
+  BaseCost: 30000
+  MaxLevel: 9
+  costIncrease: 10000
+  IsCorruptNode: 0
+  BasePrereq: 0
+  IntervalDelta: 0.1
 --- !u!1001 &1100825725
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4705,6 +4873,8 @@ MonoBehaviour:
   CaltropSeek: 0
   CaltropSeekRange: 1
   CaltropSeekSpeed: 5
+  CaltropCanSpawnCaltrop: 0
+  CaltropChainBoltInteraction: 0
   BubblesSpawned: 0
 --- !u!4 &1207787414
 Transform:
@@ -4870,7 +5040,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: Crit DMG UP!
   Description: Increases the value multiplier of your crits!
-  BaseCost: 25
+  BaseCost: 75
   MaxLevel: 6
   costIncrease: 50
   IsCorruptNode: 0
@@ -5039,6 +5209,18 @@ PrefabInstance:
       propertyPath: hideNodesOnRebuildInspector
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.b
+      value: 0.55900514
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5434946411846171809, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      propertyPath: m_Color.r
+      value: 0.5849056
+      objectReference: {fileID: 0}
     - target: {fileID: 7116320745435944352, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -5073,10 +5255,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: 
   Description: 
-  BaseCost: 1
+  BaseCost: 0
   MaxLevel: 1
   costIncrease: 0
-  IsCorruptNode: 0
+  IsCorruptNode: 1
   BasePrereq: 0
   IsActive: 0
 --- !u!1001 &1305684736
@@ -5199,9 +5381,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35ff9479c6a62794e88995aaf639c5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: 
-  Description: 
-  BaseCost: 1
+  DisplayName: Mouse Size UP!
+  Description: Creates a circle that can pop bubbles.
+  BaseCost: 15000
   MaxLevel: 1
   costIncrease: 0
   IsCorruptNode: 0
@@ -5979,6 +6161,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
   m_PrefabInstance: {fileID: 1868860731}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1520301740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68674485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1de239fa0e1ecea4e82e61088012ae62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Decrease Bubble Spawn Gap
+  Description: More bubble per bubble
+  BaseCost: 10000
+  MaxLevel: 99
+  costIncrease: 20000
+  IsCorruptNode: 0
+  BasePrereq: 0
+  WidthDecrease: 0.1
 --- !u!1001 &1547870812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6127,10 +6329,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Chain Bolt Chance Up
-  Description: Increases chance for a chain bolt to occur.
-  BaseCost: 1
-  MaxLevel: 9
-  costIncrease: 0
+  Description: Increases chance for a Chain Colt to occur.
+  BaseCost: 300
+  MaxLevel: 4
+  costIncrease: 100
   IsCorruptNode: 0
   BasePrereq: 0
   chainBoltRadiusDelta: 0
@@ -7156,6 +7358,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
   m_PrefabInstance: {fileID: 788361140}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1858851439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534689424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9db6dd173c10b5d49bfa6527faa2a484, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: Summon the Final Bubble
+  Description: also... how are you reading this??
+  BaseCost: 1
+  MaxLevel: 1
+  costIncrease: 0
+  IsCorruptNode: 1
+  BasePrereq: 0
 --- !u!1001 &1860510887
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7252,6 +7473,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 327064430}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -7306,7 +7530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_Name
-      value: Increase crit to max
+      value: Decrease spawn width
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive
@@ -7352,6 +7576,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1520301740}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -7572,6 +7799,31 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1951467208 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 142279890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1951467212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1951467208}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45ee80f0ce0aa34e8295accf2fa9d2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: 
+  Description: 
+  BaseCost: 1
+  MaxLevel: 1
+  costIncrease: 0
+  IsCorruptNode: 0
+  BasePrereq: 0
+  IsActive: 0
 --- !u!1 &1959587263
 GameObject:
   m_ObjectHideFlags: 0
@@ -7822,7 +8074,7 @@ MonoBehaviour:
   costIncrease: 5
   IsCorruptNode: 0
   BasePrereq: 0
-  IntervalDelta: 0.01
+  IntervalDelta: 0.02
 --- !u!114 &2087991690 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2279904902579510067, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
@@ -7884,7 +8136,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_Name
-      value: Decrease spawn width
+      value: You're almost there!
       objectReference: {fileID: 0}
     - target: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       propertyPath: m_IsActive
@@ -7930,6 +8182,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2132724911}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -8102,6 +8357,25 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
   m_PrefabInstance: {fileID: 2102383786}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2132724911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863616034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e55c9ebabbc8a5b4a9e4dcd0c1f489c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: You're almost there!
+  Description: Great job getting this far!  NOW FINISH IT!
+  BaseCost: 1000000
+  MaxLevel: 1
+  costIncrease: 0
+  IsCorruptNode: 0
+  BasePrereq: 0
 --- !u!1 &2146365144
 GameObject:
   m_ObjectHideFlags: 0

@@ -23,7 +23,7 @@ public class SkillNodeTooltip : MonoBehaviour
         if (hideData)
         {
             TitleText.text = "???";
-            CostText.text = "Cost: ???";
+            CostText.text = "Cost: corruption";
             DescriptionText.text = "???";
             return;
         }

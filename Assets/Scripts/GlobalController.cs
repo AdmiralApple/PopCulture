@@ -35,6 +35,9 @@ public class GlobalController : MonoBehaviour
     public bool CaltropSeek  = false; //if true, caltrops will seek nearby enemies
     public float CaltropSeekRange = 1; //range at which caltrops will seek enemies
     public float CaltropSeekSpeed = 5; //speed at which caltrops will seek enemies
+    public bool CaltropCanSpawnCaltrop = false; //if true, caltrops can spawn more caltrops
+
+    public bool CaltropChainBoltInteraction = false; //if true, caltrops can trigger chain bolts and vice versa
 
     public int BubblesSpawned = 0; //total number of popped bubbles
 
