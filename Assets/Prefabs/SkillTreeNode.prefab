@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RendererToEnable: {fileID: 0}
-  FadeInDuration: 2
+  FadeInDuration: 1
   FadeEase: 3
 --- !u!1 &2564569122807622180
 GameObject:

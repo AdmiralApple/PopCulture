@@ -88,6 +88,8 @@ public class Bubble : MonoBehaviour
                 break;
             case BubbleType.Corrupt:
                 GlobalController.Instance.SetCorrupt(true);
+                GlobalController.Instance.CurrentCorruptionTokens += 1;
+                GlobalController.Instance.TotalCorruptionTokens += 1;
                 break;
             default:
                 break;

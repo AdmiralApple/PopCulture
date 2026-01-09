@@ -31,6 +31,17 @@ public class ModifyWrapperSpeedEffect : NodeData
             return;
         }
 
+
+
+
+
+
+
+        context.GlobalController.WrapperSpeed += SpeedDelta;
+        //decided to do it simpler
+        return; 
+
+
         var renderers = wrapperObject.GetComponentsInChildren<Renderer>(true);
         var materials = new List<Material>();
         foreach (var renderer in renderers)

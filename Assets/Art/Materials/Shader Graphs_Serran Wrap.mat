@@ -51,7 +51,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _Alpha: 0.07
-    - _Depth: 0.9
+    - _Depth: 0.84
     - _QueueControl: 0
     - _QueueOffset: 0
     - _Size: 20

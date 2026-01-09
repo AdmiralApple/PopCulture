@@ -9,6 +9,8 @@ public class GlobalController : MonoBehaviour
     public BubbleSpawner BubbleSpawner;
     public float CurrentPops { get; private set; } = 0;
     public int CurrentCorruptionTokens { get; set; } = 0;
+
+    public int TotalCorruptionTokens { get; set; } = 0;
     public float TotalPops { get; private set; } = 0;
 
     public float WrapperSpeed = 3;

@@ -23,6 +23,7 @@ public class BedlyMadePopCountChecker : MonoBehaviour
                 }
                 return;
             }
+            return;
         }
         if (!revieled && GlobalController.Instance.TotalPops >= PopCouhntCheck)
         {
