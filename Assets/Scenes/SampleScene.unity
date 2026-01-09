@@ -2094,7 +2094,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d4394ebf43a6e4bb162705225dd6b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MouseClickCircle: {fileID: 0}
+  MouseClickCircle: {fileID: 1378669249}
 --- !u!4 &595783078
 Transform:
   m_ObjectHideFlags: 0
@@ -3318,9 +3318,9 @@ MonoBehaviour:
   DisplayName: Unwrap Speed
   Description: Increase the speed that you unwrap the bubble wrap.  (More speed ==
     more spawns!)
-  BaseCost: 0
-  MaxLevel: 1
-  costIncrease: 0
+  BaseCost: 25
+  MaxLevel: 5
+  costIncrease: 15
   BasePrereq: 2
   SpeedDelta: 1
 --- !u!4 &812083532 stripped
@@ -8252,6 +8252,6 @@ SceneRoots:
   - {fileID: 2122233588}
   - {fileID: 1346328927}
   - {fileID: 1939739250}
+  - {fileID: 595783078}
   - {fileID: 1458504343}
   - {fileID: 1378669253}
-  - {fileID: 595783078}

@@ -34,7 +34,8 @@ public class MouseClickCircle : MonoBehaviour
     {
         UpdatePosition();
 
-        if (Input.GetMouseButtonDown(0))
+        bool autoPopEnabled = GlobalController.Instance != null && GlobalController.Instance.AutoPop;
+        if (autoPopEnabled || Input.GetMouseButtonDown(0))
         {
             PopBubblesInRange();
         }
