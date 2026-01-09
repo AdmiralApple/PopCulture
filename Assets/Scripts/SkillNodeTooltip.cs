@@ -44,7 +44,7 @@ public class SkillNodeTooltip : MonoBehaviour
 
         if (data.IsCorruptNode)
         {
-            costParts.Add("1 Corruption Token");
+            costParts.Add("Corruption");
         }
 
         if (costParts.Count == 0)

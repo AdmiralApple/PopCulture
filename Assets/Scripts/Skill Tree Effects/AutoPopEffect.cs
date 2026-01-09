@@ -8,34 +8,7 @@ public class AutoPopEffect : NodeData
     {
         context.GlobalController.AutoPop = true;
     }
-
-    public override void InitializeNode(SkillTreeNode node)
-    {
-        base.InitializeNode(node);
-        Prerequisites.Add(new IsCorruptPrereq());
-
-        if(UnityEngine.Application.isPlaying == false)
-        {
-            return;
-        }
-        GlobalController.Instance.OnCorrupt += () =>
-        {
-            foreach (var prereq in Prerequisites)
-            {
-                if (!prereq.IsMet(node))
-                {
-                    return;
-                }
-                print("All prereqs are met on corruption. Unlocking node " + node.name);
-                foreach (var parent in node.ParentNodes)
-                {
-                    parent.ChildsToArrows[node].gameObject.SetActive(true);
-                }
-                node.gameObject.SetActive(true);
-            }
-        };
-    }
-
+    
 }
 
 public class IsCorruptPrereq : Prerequisite
