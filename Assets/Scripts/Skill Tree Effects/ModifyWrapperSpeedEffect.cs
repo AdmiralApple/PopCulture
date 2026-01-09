@@ -16,15 +16,6 @@ public class ModifyWrapperSpeedEffect : NodeData
 
 
 
-        context.GlobalController.DOKill(); // Kill any existing tweens on the target
-        float startSpeed = context.GlobalController.WrapperSpeed;
-        float endSpeed = startSpeed + SpeedDelta;
-        DOTween.To(
-            () => context.GlobalController.WrapperSpeed,
-            x => context.GlobalController.WrapperSpeed = x,
-            endSpeed,
-            2f
-        );
     }
 
     public override void Remove(SkillNodeContext context)

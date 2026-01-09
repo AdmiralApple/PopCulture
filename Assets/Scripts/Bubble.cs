@@ -82,7 +82,7 @@ public class Bubble : MonoBehaviour
                 float critChanceIncreaseChance = UnityEngine.Random.Range(0f, 1f);
                 if (critChanceIncreaseChance < GlobalController.Instance.CritIncreaseOnGoldPopChance)
                 {
-                    GlobalController.Instance.critChance += 0.01f;
+                    GlobalController.Instance.critChance += 0.1f;
                     Debug.Log("Crit Chance Increased! New Crit Chance: " + GlobalController.Instance.critChance);
                 }
                 break;
