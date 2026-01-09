@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using Sirenix;
+using Unity.VisualScripting;
 public class SkillTreeNode : MonoBehaviour
 {
     private static readonly Dictionary<NodeData, SkillTreeNode> NodeLookup = new();
@@ -198,8 +199,12 @@ public class SkillTreeNode : MonoBehaviour
             {
                 print($"Parent: {parent.name}, Level: {parent.CurrentLevel}/{parent.Data.MaxLevel}");
                 parent.ChildsToArrows[child].gameObject.SetActive(true);
+                parent.ChildsToArrows[child].gameObject.GetComponent<APL_SlowEnable>().SlowEnable();
             }
+
+
             child.gameObject.SetActive(true);
+            child.gameObject.GetComponent<APL_SlowEnable>().SlowEnable();
         }
 
         if (Data != null)
@@ -290,6 +295,7 @@ public class SkillTreeNode : MonoBehaviour
             LineRenderer line = Instantiate(ConnectionLine, transform.position, Quaternion.identity, transform);
             line.SetPosition(0, Vector3.zero);
             line.SetPosition(1, child.transform.position - transform.position);
+            line.AddComponent<APL_SlowEnable>();
 
             ChildsToArrows[child] = line;
 

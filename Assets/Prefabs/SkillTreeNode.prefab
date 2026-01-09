@@ -230,6 +230,7 @@ GameObject:
   - component: {fileID: 5434946411846171809}
   - component: {fileID: 2279904902579510067}
   - component: {fileID: 7669742167940350385}
+  - component: {fileID: 7647642449341761966}
   m_Layer: 0
   m_Name: SkillTreeNode
   m_TagString: Untagged
@@ -364,6 +365,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &7647642449341761966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2067009220321378467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d40ec4f4da9a0a04e9afa6a5d092633b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RendererToEnable: {fileID: 0}
+  FadeInDuration: 2
+  FadeEase: 3
 --- !u!1 &2564569122807622180
 GameObject:
   m_ObjectHideFlags: 0
