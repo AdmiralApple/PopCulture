@@ -9,6 +9,7 @@ public class GlobalReferenceLibrary : MonoBehaviour
     public APL_PopupText CritPopup;
     public BubbleSpawner BubbleSpawner;
     public GameObject Warpper;
+    public GameObject SkillTree;
     public GameObject Wrapper => Warpper;
     private void Awake()
     {

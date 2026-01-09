@@ -43,6 +43,8 @@ public class GlobalController : MonoBehaviour
 
     public int BubblesSpawned = 0; //total number of popped bubbles
 
+    public bool ArrowImmune = false;
+
 
     //make an event that gets called when you become corrupt
     public event System.Action OnCorrupt;

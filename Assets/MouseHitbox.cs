@@ -47,6 +47,11 @@ public class MouseHitbox : MonoBehaviour
             StopCoroutine(stunRoutine);
         }
 
+        if(GlobalController.Instance.ArrowImmune)
+        {
+            return false;
+        }
+
         Vector3 currentMouse = Input.mousePosition;
         frozenMouseScreenPosition = new Vector2(currentMouse.x, currentMouse.y);
         hasFrozenMousePosition = true;
