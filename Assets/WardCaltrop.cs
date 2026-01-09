@@ -37,6 +37,12 @@ public class WardCaltrop : MonoBehaviour
         
     }
 
+    private void Start()
+    {
+        //randomize rotation
+        transform.Rotate(0f, 0f, Random.Range(0f, 360f));
+    }
+
     private void Update()
     {
         if (GlobalController.Instance.CaltropSeek == false)

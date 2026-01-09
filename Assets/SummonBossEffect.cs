@@ -7,5 +7,6 @@ public class SummonBossEffect : NodeData
     public override void Apply(SkillNodeContext context)
     {
         GlobalReferenceLibrary.library.BubbleSpawner.gameObject.SetActive(false);
+        GlobalController.Instance.CurrentCorruptionTokens = 0;
     }
 }

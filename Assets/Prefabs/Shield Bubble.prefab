@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8001125522866639986}
   - component: {fileID: 138610894825064691}
   - component: {fileID: 4954686524203938375}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -206,6 +206,10 @@ PrefabInstance:
       propertyPath: Type
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8173418280045922779, guid: 8977d7dcc8f33774cb72caea5d897310, type: 3}
+      propertyPath: shield
+      value: 
+      objectReference: {fileID: 7153243460377590842}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

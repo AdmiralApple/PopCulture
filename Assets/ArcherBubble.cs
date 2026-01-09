@@ -64,7 +64,8 @@ public class ArcherBubble : MonoBehaviour
 
     void SpawnArrow()
     {
-        if (ArrowPrefab == null || Camera.main == null)
+        thisBubble = GetComponent<Bubble>();
+        if (ArrowPrefab == null || Camera.main == null || thisBubble == null)
         {
             print("ArrowPrefab or Main Camera is null, cannot spawn arrow.");
             return;

@@ -23,6 +23,9 @@ public class Bubble : MonoBehaviour
     public List<AudioClip> PopSounds;
 
     public static float PopVolume = 1.0f;
+
+    public GameObject Bow;
+    public GameObject shield;
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -91,6 +94,12 @@ public class Bubble : MonoBehaviour
                 GlobalController.Instance.CurrentCorruptionTokens += 1;
                 GlobalController.Instance.TotalCorruptionTokens += 1;
                 break;
+            case BubbleType.Shield:
+                shield.SetActive(false);
+                break;
+            case BubbleType.Archer:
+                Bow.SetActive(false);
+                break;
             default:
                 break;
         }
@@ -114,7 +123,7 @@ public class Bubble : MonoBehaviour
 
         //chain bolt
 
-        if (pData.Type != PopType.ChainBolt || (pData.Type == PopType.ChainBolt && GlobalController.Instance.ChainBoltCanSpawnChainBolt) || (GlobalController.Instance.CaltropChainBoltInteraction && pData.Type == PopType.Caltrop))
+        if (pData.Type == PopType.Mouse || (pData.Type == PopType.ChainBolt && GlobalController.Instance.ChainBoltCanSpawnChainBolt) || (GlobalController.Instance.CaltropChainBoltInteraction && pData.Type == PopType.Caltrop))
         {
             float chainRoll = UnityEngine.Random.Range(0f, 1f);
             if (GlobalController.Instance.ChainBoltChance > chainRoll)
@@ -125,7 +134,7 @@ public class Bubble : MonoBehaviour
         }
 
         //caltrop
-        if (pData.Type != PopType.Caltrop || (pData.Type == PopType.Caltrop && GlobalController.Instance.CaltropCanSpawnCaltrop) || (GlobalController.Instance.CaltropChainBoltInteraction && pData.Type == PopType.ChainBolt))
+        if (pData.Type == PopType.Mouse || (pData.Type == PopType.Caltrop && GlobalController.Instance.CaltropCanSpawnCaltrop) || (GlobalController.Instance.CaltropChainBoltInteraction && pData.Type == PopType.ChainBolt))
         {
             float caltropRoll = UnityEngine.Random.Range(0f, 1f);
             if (GlobalController.Instance.CaltropChance > caltropRoll)
