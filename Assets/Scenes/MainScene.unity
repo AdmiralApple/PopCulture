@@ -636,10 +636,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DisplayName: Bubble Seek
-  Description: Caltrops will now home in on bubbles that get too close.
+  Description: Caltrops will now home in on bubbles that get close.
   BaseCost: 2000
   MaxLevel: 1
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   bubbleSeek: 1
 --- !u!1 &197584524
@@ -1475,6 +1476,7 @@ MonoBehaviour:
   BaseCost: 1
   MaxLevel: 3
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   chainBoltRadiusDelta: 1
   chainBoltChanceDelta: 0
@@ -1633,6 +1635,7 @@ MonoBehaviour:
   BaseCost: 1500
   MaxLevel: 1
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   critOnGoldChanceDelta: 0.1
 --- !u!1001 &466419502
@@ -1790,6 +1793,7 @@ MonoBehaviour:
   BaseCost: 30
   MaxLevel: 10
   costIncrease: 70
+  IsCorruptNode: 0
   BasePrereq: 0
   critRateDelta: 0.02
 --- !u!1 &519420028
@@ -2095,6 +2099,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MouseClickCircle: {fileID: 1378669249}
+  CritPopup: {fileID: 1093534546766113182, guid: 33706d67b2430b649a7fff7c633250a2, type: 3}
 --- !u!4 &595783078
 Transform:
   m_ObjectHideFlags: 0
@@ -2838,6 +2843,7 @@ MonoBehaviour:
   BaseCost: 150
   MaxLevel: 1
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   chainBoltRadiusDelta: 1
   chainBoltChanceDelta: 0.1
@@ -2942,6 +2948,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+--- !u!1 &736975229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+  m_PrefabInstance: {fileID: 1277685567}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &744039214
 GameObject:
   m_ObjectHideFlags: 0
@@ -3321,6 +3332,7 @@ MonoBehaviour:
   BaseCost: 25
   MaxLevel: 5
   costIncrease: 15
+  IsCorruptNode: 0
   BasePrereq: 2
   SpeedDelta: 1
 --- !u!4 &812083532 stripped
@@ -3756,6 +3768,7 @@ MonoBehaviour:
   BaseCost: 1
   MaxLevel: 2
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   chainBoltRadiusDelta: 0
   chainBoltChanceDelta: 0
@@ -4397,6 +4410,7 @@ MonoBehaviour:
   BaseCost: 150
   MaxLevel: 10
   costIncrease: 1000
+  IsCorruptNode: 0
   BasePrereq: 0
   popValueDelta: 1
 --- !u!4 &1105886149 stripped
@@ -4575,6 +4589,7 @@ MonoBehaviour:
   BaseCost: 100
   MaxLevel: 3
   costIncrease: 50
+  IsCorruptNode: 0
   BasePrereq: 0
   SpawnRateDelta: 0.005
 --- !u!1 &1175211297
@@ -4679,7 +4694,7 @@ MonoBehaviour:
   Corrupt: 0
   AutoPop: 0
   PopValueModifier: 0
-  critChance: 0.05
+  critChance: 0
   critMultiplier: 2
   CritIncreaseOnGoldPopChance: 0
   ChainBoltRadius: 0
@@ -4858,6 +4873,7 @@ MonoBehaviour:
   BaseCost: 25
   MaxLevel: 6
   costIncrease: 50
+  IsCorruptNode: 0
   BasePrereq: 0
   critDamageDelta: 0.5
 --- !u!1 &1253972547
@@ -5031,6 +5047,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2067009220321378467, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1277685572}
     - targetCorrespondingSourceObject: {fileID: 2564569122807622180, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
@@ -5040,6 +5059,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1750101607238573716, guid: 7f976364ab8e99b4a8e9bcb4432821d5, type: 3}
   m_PrefabInstance: {fileID: 1277685567}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1277685572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 736975229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e56debd13df55a4581afe66bd8d378a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DisplayName: 
+  Description: 
+  BaseCost: 1
+  MaxLevel: 1
+  costIncrease: 0
+  IsCorruptNode: 0
+  BasePrereq: 0
+  IsActive: 0
 --- !u!1001 &1305684736
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5165,6 +5204,7 @@ MonoBehaviour:
   BaseCost: 1
   MaxLevel: 1
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   mousecircleEnabled: 1
 --- !u!1 &1345559584
@@ -6091,6 +6131,7 @@ MonoBehaviour:
   BaseCost: 1
   MaxLevel: 9
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   chainBoltRadiusDelta: 0
   chainBoltChanceDelta: 0.1
@@ -6319,9 +6360,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DisplayName: 
   Description: 
-  BaseCost: 1
-  MaxLevel: 1
-  costIncrease: 0
+  BaseCost: 350
+  MaxLevel: 9
+  costIncrease: 100
+  IsCorruptNode: 0
   BasePrereq: 0
   caltropChanceDelta: 0.1
 --- !u!1 &1622716530
@@ -6682,11 +6724,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a79f0a9fd689d14429c50912fa33eb4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DisplayName: 
-  Description: 
-  BaseCost: 1
+  DisplayName: Fire Sigil
+  Description: Popping bubbles has a chance to result in a fire sigil being spawned.
+  BaseCost: 300
   MaxLevel: 1
   costIncrease: 0
+  IsCorruptNode: 0
   BasePrereq: 0
   caltropChanceDelta: 0.1
 --- !u!1 &1666506333 stripped
@@ -7753,6 +7796,7 @@ MonoBehaviour:
   BaseCost: 0
   MaxLevel: 1
   costIncrease: 0
+  IsCorruptNode: 1
   BasePrereq: 1
 --- !u!4 &2087991685 stripped
 Transform:
@@ -7776,6 +7820,7 @@ MonoBehaviour:
   BaseCost: 5
   MaxLevel: 5
   costIncrease: 5
+  IsCorruptNode: 0
   BasePrereq: 0
   IntervalDelta: 0.01
 --- !u!114 &2087991690 stripped
