@@ -5,9 +5,14 @@ using DG.Tweening;
 
 public class SummonBossEffect : NodeData
 {
+
     public override void Apply(SkillNodeContext context)
     {
+        
+
+
         GlobalReferenceLibrary.library.BubbleSpawner.SpawnChance = 0;
+        GlobalReferenceLibrary.library.MouseClickCircle.SetActive(false);
         GlobalController.Instance.CurrentCorruptionTokens = 0;
         GlobalController.Instance.WrapperSpeed = 0;
         //DestroyImmediate(GlobalReferenceLibrary.library.SkillTree);

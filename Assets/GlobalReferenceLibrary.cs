@@ -11,6 +11,9 @@ public class GlobalReferenceLibrary : MonoBehaviour
     public GameObject Warpper;
     public GameObject SkillTree;
     public Transform BossBubble;
+
+    [Header("Audio")]
+    public List<AudioClip> PopSounds;
     public GameObject Wrapper => Warpper;
     private void Awake()
     {
