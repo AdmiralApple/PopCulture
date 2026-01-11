@@ -9,6 +9,10 @@ public class SummonBossEffect : NodeData
         GlobalReferenceLibrary.library.BubbleSpawner.SpawnChance = 0;
         GlobalController.Instance.CurrentCorruptionTokens = 0;
         GlobalController.Instance.WrapperSpeed = 0;
-        DestroyImmediate(GlobalReferenceLibrary.library.SkillTree);
+        //DestroyImmediate(GlobalReferenceLibrary.library.SkillTree);
+
+
+        //after 2 seconds, explode the skill tree
+
     }
 }
