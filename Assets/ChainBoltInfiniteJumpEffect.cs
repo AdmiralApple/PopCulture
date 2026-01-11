@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ChainBoltInfiniteJumpEffect : NodeData
 {
-    public bool IsActive = false;
 
     public override void Apply(SkillNodeContext context)
     {
-        GlobalController.Instance.ChainBoltCanSpawnChainBolt = IsActive;
+        GlobalController.Instance.ChainBoltCanSpawnChainBolt = true;
     }
 }

@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CaltropChainBoltInteractEffect : NodeData
 {
-    public bool IsActive = false;
 
     public override void Apply(SkillNodeContext context)
     {
-        GlobalController.Instance.CaltropChainBoltInteraction = IsActive;
+        GlobalController.Instance.CaltropChainBoltInteraction = true;
     }
 }

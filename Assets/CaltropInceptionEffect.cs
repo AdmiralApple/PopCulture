@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class CaltropInceptionEffect : NodeData
 {
-    public bool IsActive = false;
 
     public override void Apply(SkillNodeContext context)
     {
-        GlobalController.Instance.CaltropCanSpawnCaltrop = IsActive;
+        GlobalController.Instance.CaltropCanSpawnCaltrop = true;
     }
 }

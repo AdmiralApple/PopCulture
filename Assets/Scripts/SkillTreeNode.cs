@@ -450,12 +450,12 @@ public class SkillTreeNode : MonoBehaviour
     {
         if (TryPurchase())
         {
-            Debug.Log($"Purchased node: {name}");
+            //Debug.Log($"Purchased node: {name}");
             UpdateVisuals();
         }
         else
         {
-            Debug.Log($"Failed to purchase node: {name}");
+            //Debug.Log($"Failed to purchase node: {name}");
         }
     }
 }

@@ -10,6 +10,7 @@ public class GlobalReferenceLibrary : MonoBehaviour
     public BubbleSpawner BubbleSpawner;
     public GameObject Warpper;
     public GameObject SkillTree;
+    public Transform BossBubble;
     public GameObject Wrapper => Warpper;
     private void Awake()
     {
