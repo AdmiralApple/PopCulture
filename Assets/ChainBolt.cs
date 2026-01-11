@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ChainBolt : MonoBehaviour
 {
-    const float MoveDuration = 0.1f;
+    const float MoveDuration = 0.075f;
 
     void Start()
     {
@@ -48,7 +48,7 @@ public class ChainBolt : MonoBehaviour
             Vector3 targetPosition = targetBubble.transform.position;
 
             float distance = Vector3.Distance(transform.position, targetPosition);
-            if (distance <= 0.01f)
+            if (distance <= 0.03f)
             {
                 transform.position = targetPosition;
                 yield break;

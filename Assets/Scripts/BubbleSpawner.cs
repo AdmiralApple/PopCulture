@@ -45,11 +45,7 @@ public class BubbleSpawner : MonoBehaviour
         {
             SpawnRow();
 
-            float speed = Mathf.Max(0.0001f, GlobalController.Instance.WrapperSpeed);
-            float dx = bubbleDiameter + HorizontalGap;
-            float wait = Mathf.Max(minWait, dx / speed);
-
-            yield return new WaitForSeconds(wait);
+            yield return new WaitForSeconds(GetDxDelaySeconds());
         }
     }
 
@@ -122,6 +118,19 @@ public class BubbleSpawner : MonoBehaviour
         if (bubbleComponent == null)
             return;
 
+        StartCoroutine(RegisterBubbleDelayed(bubbleComponent));
+    }
+
+    IEnumerator RegisterBubbleDelayed(Bubble bubbleComponent)
+    {
+        float delay = GetDxDelaySeconds();
+        yield return new WaitForSeconds(delay);
+
+        if (bubbleComponent == null || bubbleComponent.Popped)
+        {
+            yield break;
+        }
+
         unpoppedBubbles.Add(bubbleComponent);
         bubbleComponent.OnBubblePopped += HandleBubbleRemoved;
         bubbleComponent.OnBubbleDestroyed += HandleBubbleRemoved;
@@ -135,6 +144,13 @@ public class BubbleSpawner : MonoBehaviour
         bubble.OnBubblePopped -= HandleBubbleRemoved;
         bubble.OnBubbleDestroyed -= HandleBubbleRemoved;
         unpoppedBubbles.Remove(bubble);
+    }
+
+    float GetDxDelaySeconds()
+    {
+        float speed = Mathf.Max(0.0001f, GlobalController.Instance.WrapperSpeed);
+        float dx = bubbleDiameter + HorizontalGap;
+        return Mathf.Max(minWait, dx / speed);
     }
 
     [System.Serializable]
