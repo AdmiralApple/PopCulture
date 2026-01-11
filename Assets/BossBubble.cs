@@ -11,11 +11,21 @@ public class BossBubble : MonoBehaviour
     public GameObject UnpoppedSprite;
     public GameObject PoppedSprite;
     [SerializeField] private int maxRandomDigits = 250;
+    [SerializeField] private float randomizationDuration = 5f;
+    [SerializeField] private float initialRandomDelay = 0.2f;
+    [SerializeField] private float finalRandomDelay = 0.02f;
 
     public bool isClickable = false;
     public TextMeshProUGUI HappinessCounter;
     public PopCounter HappinessPopCounter;
     public ObjectExploder Exploder;
+
+    public GameObject HappyYet1;
+    public GameObject HappyYet2;
+    public GameObject OldCanvas;
+
+    public GameObject ThanksForPlaying;
+
 
     private void OnMouseDown()
     {
@@ -62,9 +72,14 @@ public class BossBubble : MonoBehaviour
 
         if (HappinessCounter == null) yield break;
 
-        for (int i = 0; i < 20; i++)
+        float timer = 0f;
+        int iteration = 0;
+        float safeDuration = Mathf.Max(0.01f, randomizationDuration);
+
+        while (timer < safeDuration)
         {
-            int digits = Mathf.Clamp(GetFibonacci(i + 1), 1, maxRandomDigits);
+            iteration++;
+            int digits = Mathf.Clamp(GetFibonacci(iteration), 1, maxRandomDigits);
 
             var builder = new StringBuilder("Happiness: ");
             for (int d = Mathf.FloorToInt(GlobalController.Instance.CurrentPops).ToString().Length; d < digits; d++)
@@ -73,15 +88,33 @@ public class BossBubble : MonoBehaviour
             }
 
             HappinessCounter.text = builder.ToString();
-            yield return new WaitForSeconds(0.2f);
+
+            float normalizedTime = safeDuration <= 0f ? 1f : Mathf.Clamp01(timer / safeDuration);
+            float delay = Mathf.Lerp(initialRandomDelay, finalRandomDelay, normalizedTime);
+            delay = Mathf.Max(0.0001f, delay);
+
+            yield return new WaitForSeconds(delay);
+            timer += delay;
         }
 
-
-
         Exploder.ExplodeAll();
+        OldCanvas.SetActive(false);
 
+        yield return new WaitForSeconds(4f);
 
-        yield return new WaitForSeconds(5f);
+        HappyYet1.SetActive(true);
+        HappyYet2.SetActive(true);
+        PlayRandomPopSound();
+
+        yield return new WaitForSeconds(2f);
+
+        HappyYet1.SetActive(false);
+        HappyYet2.SetActive(false);
+
+        yield return new WaitForSeconds(2f);
+
+        ThanksForPlaying.SetActive(true);
+        PlayRandomPopSound();
     }
 
     private int GetFibonacci(int n)

@@ -46,6 +46,7 @@ public class SummonBossEffect : NodeData
         GlobalReferenceLibrary.library.BossBubble.DOMoveX(0, 5f).SetEase(Ease.Linear).onComplete += () =>
         {
             GlobalReferenceLibrary.library.BossBubble.GetComponent<BossBubble>().isClickable = true;
+            exploder.ExplodeChildren(GlobalReferenceLibrary.library.BubbleSpawner.gameObject);
         };
     }
 }
