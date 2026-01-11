@@ -1,35 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
 
 public class ChainBolt : MonoBehaviour
 {
+    const float MoveDuration = 0.1f;
+
     void Start()
     {
         StartCoroutine(ChainCoroutine());
+    }
+
+    void Update()
+    {
+        transform.position += Vector3.right * GlobalController.Instance.WrapperSpeed * Time.deltaTime;
     }
 
     IEnumerator ChainCoroutine()
     {
         for (int i = 0; i < GlobalController.Instance.ChainBoltMaxJumps; i++)
         {
-            bool reachedBubble = false;
             Bubble targetBubble = FindRandomNearestBubble();
 
-            if (targetBubble != null)
+            if (targetBubble == null)
             {
-                transform.DOMove(targetBubble.transform.position, 0.1f).onComplete += () => { reachedBubble = true; };
-                Debug.Log("Chain Bolt to bubble at position: " + targetBubble.transform.position);
-                targetBubble.Pop(new PopData(PopType.ChainBolt));
-                while (!reachedBubble)
-                {
-                    yield return null;
-                }
+                yield return null;
+                continue;
+            }
+
+            yield return MoveToBubble(targetBubble);
+
+            if (targetBubble != null && !targetBubble.Popped)
+            {
+                PopData popData = new PopData(PopType.ChainBolt);
+                popData.chainCount = i + 1;
+                targetBubble.Pop(popData);
             }
         }
 
         Destroy(gameObject);
+    }
+
+    IEnumerator MoveToBubble(Bubble targetBubble)
+    {
+        while (targetBubble != null && !targetBubble.Popped)
+        {
+            Vector3 targetPosition = targetBubble.transform.position;
+
+            float distance = Vector3.Distance(transform.position, targetPosition);
+            if (distance <= 0.01f)
+            {
+                transform.position = targetPosition;
+                yield break;
+            }
+
+            float moveSpeed = distance / MoveDuration;
+            transform.position = Vector3.MoveTowards(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+
+            yield return null;
+        }
     }
 
     Bubble FindRandomNearestBubble()

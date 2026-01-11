@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ChainBoltEffect : NodeData
 {
+    public bool ActivateBowAndArcher = false;
     public float chainBoltRadiusDelta = 0.5f;
     public float chainBoltChanceDelta = 0.1f;
     public int chainBoltMaxJumpsDelta = 1;
@@ -15,7 +16,7 @@ public class ChainBoltEffect : NodeData
         targetController.ChainBoltMaxJumps += chainBoltMaxJumpsDelta;
 
         var spawner = GlobalReferenceLibrary.library.BubbleSpawner;
-        if (spawner != null)
+        if (ActivateBowAndArcher)
         {
             foreach (var bubbleType in spawner.SpecialBubbleVariants)
             {
